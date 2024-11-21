@@ -3,8 +3,8 @@ import React from 'react';
 const ResponsiveBanner = ({ smallImage, largeImage, aspectRatio = '3.73 / 1', className = '', altText = '', ...props }) => {
     return (
         <div
-            className={`relative my-4  py-4 ${className}`}
-            style={{ aspectRatio }}
+            className={`relative my-4  ${className}`}
+            // style={{ aspectRatio }}
             {...props}
         >
             <span className=" inset-0 block overflow-hidden">
