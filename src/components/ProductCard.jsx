@@ -70,7 +70,7 @@ export default function ProductCard({ product }) {
                         <span>Save NPR. {(price - discountPrice).toFixed(2)}</span>
                     </div>
                 </div>
-                <div className="hidden group-hover:block mb-7 mt-2">
+                <div className="lg:hidden group-hover:block mb-7 mt-2">
                     <div className="flex items-center space-x-2">
                         {/* Wishlist Button */}
                         <button
