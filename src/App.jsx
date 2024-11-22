@@ -24,7 +24,7 @@ export default function App() {
       ,
     },
     {
-      path: "/admin",
+      path: "/admin/",
       element: <AdminLayout />,
       children: [
         {
