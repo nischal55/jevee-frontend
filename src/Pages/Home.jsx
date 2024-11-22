@@ -1,6 +1,7 @@
 import BrandOfTheHour from "../components/BrandOfTheHour";
 import BrandOfThisSeason from "../components/BrandOfThisSeason";
 import BrandsForYou from "../components/BrandsForYou";
+import ExploreGadgetsAndAccesories from "../components/ExploreGadgetsAndAccesories";
 import MostSearchedProducts from "../components/MostSearchedProducts";
 import ProductDisplay from "../components/ProductDisplay";
 import ResponsiveBanner from "../components/ResponsiveBanner";
@@ -10,8 +11,16 @@ export default function Home() {
     <div className="bg-[#F2F2F2] ">
       <div className="w-[90%] mx-auto">
         <BrandOfTheHour />
-        <ProductDisplay href={"/"} title={"Bored ? Try some Board games!"} products={products} />
-        <ProductDisplay href={"/"} title={"13.11 Best Sellers - Gadgets & Appliances"} products={products} />
+        <ProductDisplay
+          href={"/"}
+          title={"Bored ? Try some Board games!"}
+          products={products}
+        />
+        <ProductDisplay
+          href={"/"}
+          title={"13.11 Best Sellers - Gadgets & Appliances"}
+          products={products}
+        />
         <ResponsiveBanner
           smallImage="https://jevee.s3.us-east-2.amazonaws.com/cms/featured-banner/53a596a7-e38f-492f-8b36-689ad61a9436.jpg"
           largeImage="https://jevee.s3.us-east-2.amazonaws.com/cms/featured-banner/e00d8e53-fab7-47ba-ac7b-443b4a776980.jpg"
@@ -30,7 +39,6 @@ export default function Home() {
         <BrandOfThisSeason />
         <MostSearchedProducts />
         <ResponsiveBanner
-
           smallImage="https://jevee.s3.us-east-2.amazonaws.com/cms/featured-banner/c9008dc0-5d32-44d5-97f4-21c7aeb791fb.webp"
           largeImage="https://jevee.s3.us-east-2.amazonaws.com/cms/featured-banner/b06e733b-4e25-4691-8ec5-80ae8b0afe94.webp"
           aspectRatio="3.73 / 1"
@@ -52,8 +60,12 @@ export default function Home() {
           altText="Responsive Featured Banner"
         />
         <BrandsForYou />
-
+        <ExploreGadgetsAndAccesories
+          href={"/"}
+          title={"Explore Gadgets and Accessories"}
+          products={products}
+        />
       </div>
     </div>
-  )
+  );
 }
