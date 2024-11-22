@@ -1,11 +1,9 @@
-import BrandCard from "../components/BrandCard";
 import BrandOfTheHour from "../components/BrandOfTheHour";
 import BrandOfThisSeason from "../components/BrandOfThisSeason";
 import BrandsForYou from "../components/BrandsForYou";
 import MostSearchedProducts from "../components/MostSearchedProducts";
 import ProductDisplay from "../components/ProductDisplay";
 import ResponsiveBanner from "../components/ResponsiveBanner";
-import Responsivecarousel from "../components/Responsivecarousel";
 import products from "../data/product";
 export default function Home() {
   return (
