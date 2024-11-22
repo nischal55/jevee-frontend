@@ -4,6 +4,7 @@ import {
 } from "react-router-dom";
 import Home from "./Pages/Home";
 import RootComponent from "./Common/RootComponent";
+import ProductPageMain from "./components/ProductPageMain";
 
 
 
@@ -14,8 +15,12 @@ export default function App() {
       element: <RootComponent/>,
       children:[
         {
-          path:"",
+          path:"home",
           element:<Home/>
+        },
+        {
+        path:"products",
+        element:<ProductPageMain/>
         }
       ]
       ,
