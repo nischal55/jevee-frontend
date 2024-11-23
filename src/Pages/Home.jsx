@@ -1,6 +1,7 @@
 import BrandOfTheHour from "../components/BrandOfTheHour";
 import BrandOfThisSeason from "../components/BrandOfThisSeason";
 import BrandsForYou from "../components/BrandsForYou";
+import CategorySection from "../components/CategorySection";
 import ExploreGadgetsAndAccesories from "../components/ExploreGadgetsAndAccesories";
 import MostSearchedProducts from "../components/MostSearchedProducts";
 import ProductDisplay from "../components/ProductDisplay";
@@ -10,6 +11,7 @@ export default function Home() {
   return (
     <div className="bg-[#F2F2F2] ">
       <div className="w-[90%] mx-auto">
+        <CategorySection/>
         <BrandOfTheHour />
         <ProductDisplay
           href={"/"}
