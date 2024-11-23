@@ -5,7 +5,6 @@ import "../../index.css"
 const SliderComp = () => {
 
   const [values, setValues] = useState([30,17500])
-  console.log(values);
   
   return (
     <div>

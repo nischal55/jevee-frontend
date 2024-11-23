@@ -1,87 +1,39 @@
 import React from 'react'
+import BrandsFilterCheckbbox from './BrandsFilterCheckbbox'
+import { useParams } from "react-router-dom";
+import ProductsHolder from '../../data/ProductsHolder';
+
 
 const BrandsFilter = () => {
+    
+    const { category } = useParams();
+    const products = ProductsHolder[category] || [];
+  
+    // Create a Set to store unique brands
+    const uniqueBrands = new Set(products.map((product) => product.brand));
+
+    // Convert the Set back to an array for mapping
+    const brandsArray = Array.from(uniqueBrands);
+    
   return (
+
     <div className="">
          <div className="m-5 ">
                     <h1 className='font-semibold text-lg text-gray-700 ml-3'>Brands</h1>
 
-                        
-                    {/* SearchBoxForBrands */}
                     <div className="p-3">
                         <input className='border-2 border-gray-400 rounded-full px-4 py-2 outline-none' type="search" placeholder='Search'/>
                     </div>
                     <div className=" border-b-gray-400 w-full border-b-2 p-2 flex justify-between h-80 scrollbar-thin scrollbar-track-transparent scrollbar-thumb-gray-200 no-scrollbar-arrows overflow-auto ">
                 <div className="w-full justify-between flex  flex-col h-1/3 ">
-                    <div className="w-full justify-between flex p-2 border-t-gray-400 border-t-2">
-                        <label htmlFor="axe">Axe</label>
-                        <input type="checkbox" name="" id="axe" />
-                    </div>
 
-                    <div className="w-full justify-between flex p-2 border-t-gray-400 border-t-2">
-                        <label htmlFor="">Axe</label>
-                        <input type="checkbox" name="" id="" />
-                    </div>
+                {
+            brandsArray.map((elem)=>{ // Map over the unique brands array
+              return <BrandsFilterCheckbbox key={elem} brands={elem} />
+            })
+          }
 
-                    <div className="w-full justify-between flex p-2 border-t-gray-400 border-t-2">
-                        <label htmlFor="">Axe</label>
-                        <input type="checkbox" name="" id="" />
-                    </div>
-
-                    <div className="w-full justify-between flex p-2 border-t-gray-400 border-t-2">
-                        <label htmlFor="">Axe</label>
-                        <input type="checkbox" name="" id="" />
-                    </div>
-
-                    <div className="w-full justify-between flex p-2 border-t-gray-400 border-t-2">
-                        <label htmlFor="">Axe</label>
-                        <input type="checkbox" name="" id="" />
-                    </div>
-
-
-                    <div className="w-full justify-between flex p-2 border-t-gray-400 border-t-2">
-                        <label htmlFor="">Axe</label>
-                        <input type="checkbox" name="" id="" />
-                    </div>
-
-
-                    <div className="w-full justify-between flex p-2 border-t-gray-400 border-t-2">
-                        <label htmlFor="">Axe</label>
-                        <input type="checkbox" name="" id="" />
-                    </div>
-
-
-                    <div className="w-full justify-between flex p-2 border-t-gray-400 border-t-2">
-                        <label htmlFor="">Axe</label>
-                        <input type="checkbox" name="" id="" />
-                    </div>
-
-
-
-                    <div className="w-full justify-between flex p-2 border-t-gray-400 border-t-2">
-                        <label htmlFor="">Axe</label>
-                        <input type="checkbox" name="" id="" />
-                    </div>
-
-                    <div className="w-full justify-between flex p-2 border-t-gray-400 border-t-2">
-                        <label htmlFor="">Axe</label>
-                        <input type="checkbox" name="" id="" />
-                    </div>
-
-                    <div className="w-full justify-between flex p-2 border-t-gray-400 border-t-2">
-                        <label htmlFor="">Axe</label>
-                        <input type="checkbox" name="" id="" />
-                    </div>
-
-                    <div className="w-full justify-between flex p-2 border-t-gray-400 border-t-2">
-                        <label htmlFor="">Axe</label>
-                        <input type="checkbox" name="" id="" />
-                    </div>
-
-                    <div className="w-full justify-between flex p-2 border-t-gray-400 border-t-2">
-                        <label htmlFor="">Axe</label>
-                        <input type="checkbox" name="" id="" />
-                    </div>
+                    
                     </div>
                     </div>
             </div>

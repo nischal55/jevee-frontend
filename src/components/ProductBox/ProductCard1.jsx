@@ -9,7 +9,7 @@ const ProductCard1 = ({ image, name, price, discount }) => {
 
   const discountPrice = price * (1 - parseInt(discount) / 100);
 
-  const truncatedName = name.length > 30 ? `${name.substring(0, 30)}...` : name;
+  const truncatedName = name.length > 23 ? `${name.substring(0, 23)}...` : name;
 
   return (
     <div
@@ -43,11 +43,13 @@ const ProductCard1 = ({ image, name, price, discount }) => {
           </span>
         
         </div>
-        <div className="text-gray-400 text-sm line-through">
+        <div className="flex justify-center gap-1">
+        <div className="text-gray-400 text-xs line-through">
           <p>{price.toFixed(2)}</p>
           
         </div>
-        <div className=""><p>Save NPR. {(price - discountPrice).toFixed(2)}</p></div>
+        <div className="text-xs"><p>Save NPR. {(price - discountPrice).toFixed(2)}</p></div>
+      </div>
       </div>
       
 
