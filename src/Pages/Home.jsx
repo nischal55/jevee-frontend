@@ -6,11 +6,13 @@ import ExploreGadgetsAndAccesories from "../components/ExploreGadgetsAndAccesori
 import MostSearchedProducts from "../components/MostSearchedProducts";
 import ProductDisplay from "../components/ProductDisplay";
 import ResponsiveBanner from "../components/ResponsiveBanner";
+import Slider from "../components/Slider";
 import products from "../data/product";
 export default function Home() {
   return (
     <div className="bg-[#F2F2F2] ">
       <div className="w-[90%] mx-auto">
+        <Slider/>
         <CategorySection/>
         <BrandOfTheHour />
         <ProductDisplay
