@@ -20,10 +20,7 @@ export default function App() {
           path: "products/:category", // Dynamic route for categories
           element: <ProductPageMain />, // ProductPageMain will handle category rendering
         },
-        {
-          path : "products/:category/:subcategory",
-          element : <ProductPageMain/>,
-        }
+         
       ],
     },
   ]);
