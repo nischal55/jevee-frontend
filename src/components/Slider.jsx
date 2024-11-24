@@ -35,7 +35,7 @@ export default function Slider() {
     return (
         <>
         <AutoplaySlider
-            className="md:w-[1360px] md:h-[205px] lg:h-[348px] rounded-md w-[0px] h-[0px] "
+            className="md:w-[1360px] md:h-[205px] lg:h-[348px] rounded-md w-[0px] h-[0px] pt-2"
             organicArrows={false}
             buttonContentRight={<p style={buttonStyle} className="text-black font-bold"><MdNavigateNext /></p>}
             buttonContentLeft={<p style={buttonStyle} className="text-black font-bold "><GrFormPrevious /></p>}
