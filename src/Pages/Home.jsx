@@ -12,8 +12,8 @@ export default function Home() {
   return (
     <div className="bg-[#F2F2F2] ">
       <div className="w-[90%] mx-auto">
-        <Slider/>
-        <CategorySection/>
+        <Slider />
+        <CategorySection />
         <BrandOfTheHour />
         <ProductDisplay
           href={"/"}
@@ -33,6 +33,7 @@ export default function Home() {
           altText="Responsive Featured Banner"
         />
         <ProductDisplay href={"/"} title={""} products={products} />
+
         <ResponsiveBanner
           smallImage="https://jevee.s3.us-east-2.amazonaws.com/cms/featured-banner/b78c4af2-a4a5-42d9-9dd8-aaf11e426b94.webp"
           largeImage="https://jevee.s3.us-east-2.amazonaws.com/cms/featured-banner/32d15921-884b-4a40-8ac6-53ce6f70e6a5.webp"
@@ -67,6 +68,11 @@ export default function Home() {
         <ExploreGadgetsAndAccesories
           href={"/"}
           title={"Explore Gadgets and Accessories"}
+          products={products}
+        />
+        <ProductDisplay
+          href={"/"}
+          title={"Best Diaper Deals"}
           products={products}
         />
       </div>
