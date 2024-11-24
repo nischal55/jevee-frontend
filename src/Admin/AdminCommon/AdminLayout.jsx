@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { Outlet } from "react-router-dom";
 import AdminHeader from "./AdminHeader";
 import AdminSidebar from "./AdminSidebar";
+import CardBox from "../cardCompo/cardBox";
 
 const AdminLayout = () => {
   const [open, setOpen] = useState(false);
@@ -16,6 +17,12 @@ const AdminLayout = () => {
         }`}
       >
         <Outlet />
+
+        <div className="cardHead">
+          <h2>Dashboard</h2>
+          {/* <i className="fas fa-shopping-cart"></i> */}
+        </div>
+        <CardBox />
       </div>
     </>
   );
