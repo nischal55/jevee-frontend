@@ -4,11 +4,7 @@ import {
 } from "react-router-dom";
 import Home from "./Pages/Home";
 import RootComponent from "./Common/RootComponent";
-import AdminLayout from "./Admin/AdminCommon/AdminLayout";
-import Dashboard from "./Admin/pages/Dashboard";
-
-
-
+import Prescription from "./Common/Prescription";
 
 export default function App() {
   const router = createBrowserRouter([
@@ -17,19 +13,12 @@ export default function App() {
       element: <RootComponent />,
       children: [
         {
-          path: "",
+          index: true,
           element: <Home />
-        }
-      ]
-      ,
-    },
-    {
-      path: "/admin/",
-      element: <AdminLayout />,
-      children: [
+        },
         {
-          path: "",
-          element: <Dashboard />
+          path: "prescription",
+          element: <Prescription />
         }
       ]
     }
@@ -39,5 +28,5 @@ export default function App() {
     <>
       <RouterProvider router={router} />
     </>
-  )
+  );
 }
