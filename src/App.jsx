@@ -5,6 +5,8 @@ import {
 import Home from "./Pages/Home";
 import RootComponent from "./Common/RootComponent";
 import Prescription from "./Common/Prescription";
+import ProtectedRoutes from "./Admin/AdminCommon/ProtectedRoutes";
+import AdminLayout from "./Admin/AdminCommon/AdminLayout";
 
 export default function App() {
   const router = createBrowserRouter([
@@ -19,6 +21,16 @@ export default function App() {
         {
           path: "prescription",
           element: <Prescription />
+        }
+      ]
+    },
+    {
+      path: "/admin",
+      element : <ProtectedRoutes/>,
+      children :[
+        {
+          path:"",
+          element:<AdminLayout/>
         }
       ]
     }
