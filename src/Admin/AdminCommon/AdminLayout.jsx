@@ -2,29 +2,26 @@ import React, { useState } from "react";
 import { Outlet } from "react-router-dom";
 import AdminHeader from "./AdminHeader";
 import AdminSidebar from "./AdminSidebar";
-import CardBox from "../cardCompo/cardBox";
+
+import ProtectedRoutes from "./ProtectedRoutes";
 
 const AdminLayout = () => {
   const [open, setOpen] = useState(false);
 
   return (
-    <>
+    <ProtectedRoutes>
       <AdminHeader setOpen={setOpen} isSidebarOpen={open} />
-      <AdminSidebar open={open} />
+      <AdminSidebar open={open} setOpen={setOpen} />
       <div
-        className={`pt-16 transition-all duration-300 ${
-          open ? "pl-64" : "pl-20"
-        }`}
-      >
+        className={`pt-16 transition-all duration-300 ${open ? "lg:pl-64" : "lg:pl-20"}`}>
+
+
+
         <Outlet />
 
-        <div className="cardHead">
-          <h2>Dashboard</h2>
-          {/* <i className="fas fa-shopping-cart"></i> */}
-        </div>
-        <CardBox />
+
       </div>
-    </>
+    </ProtectedRoutes>
   );
 };
 
