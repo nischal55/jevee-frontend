@@ -1,37 +1,31 @@
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
-import Home from "./Pages/Home";
 import RootComponent from "./Common/RootComponent";
-import Feedback from "./Pages/feedback/feedback";
+import FeedBack from "./Pages/feedback/FeedBack";
+import Home from "./Pages/Home";
 import SellOnJevee from "./Pages/SellOnJevee";
 
 export default function App() {
   const router = createBrowserRouter([
     {
-   path: "/",
-   element: <RootComponent />,
-   children: [
-     {
+      path: "/",
+      element: <RootComponent />,
+      children: [
+        {
           path: "/",
           element: <Home />,
-       },
-        
-     {
+        },
+
+        {
           path: "/sellonjevee",
           element: <SellOnJevee />,
-       },
-       {
-        path: "/feedback",
-        element: <Feedback />,
-       }
-        
-     ],
-     },
-   ]);
+        },
+        {
+          path: "/feedback",
+          element: <FeedBack />,
+        },
+      ],
+    },
+  ]);
 
-  return (
-    <>
-       {<RouterProvider router={router} /> } 
-    
-    </>
-  );
+  return <>{<RouterProvider router={router} />}</>;
 }
