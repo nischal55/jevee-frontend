@@ -8,6 +8,9 @@ import Prescription from "./Common/Prescription";
 import ProtectedRoutes from "./Admin/AdminCommon/ProtectedRoutes";
 import AdminLayout from "./Admin/AdminCommon/AdminLayout";
 import Login from './Admin/login/login'; 
+import Dashboard from "./Admin/pages/Dashboard";
+import CreateCategory from "./Admin/pages/categories/CreateCategory";
+import AllCategories from "./Admin/pages/categories/AllCategories";
 
 export default function App() {
   const router = createBrowserRouter([
@@ -27,16 +30,29 @@ export default function App() {
     },
     {
       path: "/admin",
-      element: <ProtectedRoutes />,
+      element: <AdminLayout />,
       children: [
         {
           path: "",
-          element: <AdminLayout />
+          index: true,
+          element: <Dashboard />
+        },{
+          path:"product-category",
+          children:[{
+            path:"",
+            index:true,
+            element:<AllCategories />
+          },
+          {
+            path:"create",
+            element:<CreateCategory />
+          }
+        ]
         }
       ]
     },
     {
-      // Add a new route for the Login component
+ 
       path: "/login",
       element: <Login />
     }
