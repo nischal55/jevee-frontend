@@ -5,12 +5,12 @@ import {
 import Home from "./Pages/Home";
 import RootComponent from "./Common/RootComponent";
 import Prescription from "./Common/Prescription";
-import ProtectedRoutes from "./Admin/AdminCommon/ProtectedRoutes";
 import AdminLayout from "./Admin/AdminCommon/AdminLayout";
-import Login from './Admin/login/login'; 
+import Login from "./Admin/login/login"; 
 import Dashboard from "./Admin/pages/Dashboard";
 import CreateCategory from "./Admin/pages/categories/CreateCategory";
 import AllCategories from "./Admin/pages/categories/AllCategories";
+import Profile from "./Admin/pages/profile/profile";
 
 export default function App() {
   const router = createBrowserRouter([
@@ -20,13 +20,13 @@ export default function App() {
       children: [
         {
           index: true,
-          element: <Home />
+          element: <Home />,
         },
         {
           path: "prescription",
-          element: <Prescription />
-        }
-      ]
+          element: <Prescription />,
+        },
+      ],
     },
     {
       path: "/admin",
@@ -35,27 +35,32 @@ export default function App() {
         {
           path: "",
           index: true,
-          element: <Dashboard />
-        },{
-          path:"product-category",
-          children:[{
-            path:"",
-            index:true,
-            element:<AllCategories />
-          },
-          {
-            path:"create",
-            element:<CreateCategory />
-          }
-        ]
-        }
-      ]
+          element: <Dashboard />,
+        },
+        {
+          path: "product-category",
+          children: [
+            {
+              path: "",
+              index: true,
+              element: <AllCategories />,
+            },
+            {
+              path: "create",
+              element: <CreateCategory />,
+            },
+          ],
+        },
+        {
+          path: "profile", 
+          element: <Profile />, 
+        },
+      ],
     },
     {
- 
       path: "/login",
-      element: <Login />
-    }
+      element: <Login />,
+    },
   ]);
 
   return (
