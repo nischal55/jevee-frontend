@@ -1,12 +1,16 @@
+
 import BrandOfTheHour from "../components/BrandOfTheHour";
 import BrandOfThisSeason from "../components/BrandOfThisSeason";
 import MostSearchedProducts from "../components/MostSearchedProducts";
 import ProductDisplay from "../components/ProductDisplay";
 import ResponsiveBanner from "../components/ResponsiveBanner";
 import products from "../data/product";
+import SellOnJevee from "./SellOnJevee";
+
 export default function Home() {
   return (
     <>
+   
       <h1 className="text-slate-800 md:text-orange-600 lg:text-indigo-600">THis is Home page</h1>
       <div className="w-[90%] mx-auto">
 
@@ -30,6 +34,7 @@ export default function Home() {
       />
       <BrandOfThisSeason />
 <MostSearchedProducts />
+
       </div>
     </>
   )
