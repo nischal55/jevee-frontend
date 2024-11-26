@@ -4,7 +4,7 @@ import {
 } from "react-router-dom";
 import Home from "./Pages/Home";
 import RootComponent from "./Common/RootComponent";
-import ProductPageMain from "./components/ProductPageMain";
+import ProductPageMain from "./components/ProductBox/ProductPageMain";
 
 export default function App() {
   const router = createBrowserRouter([
@@ -17,9 +17,13 @@ export default function App() {
           element: <Home />,
         },
         {
-          path: "products/:category", // Dynamic route for categories
-          element: <ProductPageMain />, // ProductPageMain will handle category rendering
+          path: "category/:category", 
+          element: <ProductPageMain />, 
         },
+        {
+        path: "category/:category/:subCategory",
+        element: <ProductPageMain />,
+        }
          
       ],
     },

@@ -1,44 +1,61 @@
-import React from 'react'
-import BrandsFilterCheckbbox from './BrandsFilterCheckbbox'
-import { useParams } from "react-router-dom";
-import ProductsHolder from '../../data/ProductsHolder';
+import React, { useState } from 'react';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faSearch } from '@fortawesome/free-solid-svg-icons';
+
+const BrandsFilter = ({ brands, setFilteredBrands, selectedBrands }) => {
+  const [searchQuery, setSearchQuery] = useState("");  
+
+   const handleBrandSelection = (brand) => {
+    if (selectedBrands.includes(brand)) {
+       setFilteredBrands(selectedBrands.filter(b => b !== brand));
+    } else {
+       setFilteredBrands([...selectedBrands, brand]);
+    }
+  };
 
 
-const BrandsFilter = () => {
-    
-    const { category } = useParams();
-    const products = ProductsHolder[category] || [];
-  
-    // Create a Set to store unique brands
-    const uniqueBrands = new Set(products.map((product) => product.brand));
+  const filteredBrands = brands.filter(brand =>
+    brand.toLowerCase().includes(searchQuery.toLowerCase())
+  );
 
-    // Convert the Set back to an array for mapping
-    const brandsArray = Array.from(uniqueBrands);
-    
   return (
+    <div className="m-5">
+      <h3 className="font-semibold text-lg text-gray-700">Brands</h3>
 
-    <div className="">
-         <div className="m-5 ">
-                    <h1 className='font-semibold text-lg text-gray-700 ml-3'>Brands</h1>
 
-                    <div className="p-3">
-                        <input className='border-2 border-gray-400 rounded-full px-4 py-2 outline-none' type="search" placeholder='Search'/>
-                    </div>
-                    <div className=" border-b-gray-400 w-full border-b-2 p-2 flex justify-between h-80 scrollbar-thin scrollbar-track-transparent scrollbar-thumb-gray-200 no-scrollbar-arrows overflow-auto ">
-                <div className="w-full justify-between flex  flex-col h-1/3 ">
+      <div className="h-10 flex font-light items-center rounded-full mr-2 my-2 p-2 bg-gray-100">
+        <FontAwesomeIcon icon={faSearch} className="text-gray-500 mr-2" />
+        <input
+          type="search"
+          placeholder="Search"
+          value={searchQuery}
+          onChange={(e) => setSearchQuery(e.target.value)}
+          className="w-full p-1 bg-gray-100 border-none focus:outline-none"
+        />
+      </div>
 
-                {
-            brandsArray.map((elem)=>{ // Map over the unique brands array
-              return <BrandsFilterCheckbbox key={elem} brands={elem} />
-            })
-          }
-
-                    
-                    </div>
-                    </div>
+      <div className="overflow-auto scrollbar-thin scrollbar-thumb-gray-300 pr-2 scrollbar-track-transparent max-h-80 ">
+         {filteredBrands && filteredBrands.length > 0 ? (
+          filteredBrands.map((brand, index) => (
+            <div key={index} className="flex px-1 items-center font-light justify-between py-2.5 pr-2 border-t-2 border-gray-300">
+              <label htmlFor={brand} className="text-sm">{brand}</label>
+              <input
+                type="checkbox"
+                id={brand}  
+                className="w-4 h-4"
+                checked={selectedBrands.includes(brand)}
+                onChange={() => handleBrandSelection(brand)} 
+              />
             </div>
-    </div>
-  )
-}
 
-export default BrandsFilter
+            
+          ))
+        ) : (
+          <p>No brands found matching your search.</p>
+        )}
+      </div>
+    </div>
+  );
+};
+
+export default BrandsFilter;

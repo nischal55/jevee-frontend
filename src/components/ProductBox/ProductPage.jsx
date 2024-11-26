@@ -1,38 +1,39 @@
-import React from "react";
-import { useParams } from "react-router-dom";
-import ProductsHolder from "../../data/ProductsHolder";
-import ProductCard1 from "./ProductCard1";
+import React from 'react';
+import ProductCard from '../ProductCard';
+import { useParams } from 'react-router-dom';
 
+const ProductPage = ({ filteredBrands, filteredSizes, filteredPrice, filteredProducts }) => {
+  const { category, subCategory } = useParams();
 
-const ProductPage = () => {
-  const { category } = useParams(); // Extract category from URL
-  
+  const productsToFilter = Array.isArray(filteredProducts) ? filteredProducts : [];
 
-  // Get products for the given category
-  const products = ProductsHolder[category] || []; // Fallback to empty array
-  
+  const filteredFinalProducts = productsToFilter.filter((product) => {
+    const isBrandMatch = filteredBrands.length === 0 || filteredBrands.includes(product.brand);
+    const isSizeMatch = filteredSizes.length === 0 || filteredSizes.includes(product.size);
+    const isPriceMatch = product.price >= filteredPrice[0] && product.price <= filteredPrice[1];
+
+    return isBrandMatch && isSizeMatch && isPriceMatch;
+  });
 
   return (
-    <div className="w-full items-start ml-10 flex flex-col">
-      <div className="px-4 pb-4 pt-5">
-        <h1 className="font-light text-gray-700">Categories</h1>
-        <p className="text-lg text-gray-500">{category}</p>
+    <div className="px-3 flex flex-col">
+      <div className="py-3">
+        <h1 className="text-sm font-light">Categories</h1>
+        <p className="text-2xl font-light">
+           {subCategory ? 
+            ` ${subCategory.charAt(0).toUpperCase() + subCategory.slice(1)}` : 
+            category.charAt(0).toUpperCase() + category.slice(1)
+          }
+        </p>
       </div>
 
-      <div className="flex flex-wrap justify-center gap-3 bg-white">
-        {products.length > 0 ? (
-          products.map((elem) => (
-            <ProductCard1
-          key={elem.id} 
-          id={elem.id} 
-          name={elem.name} 
-          discount={elem.discount}
-          price={elem.price} 
-          image={elem.image}
-          />
+      <div className="products-list grid grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-4">
+        {filteredFinalProducts.length > 0 ? (
+          filteredFinalProducts.map((product, index) => (
+            <ProductCard key={index} product={product} />
           ))
         ) : (
-          <p>No products found for this category.</p>
+          <p>No products found.</p>
         )}
       </div>
     </div>
@@ -40,4 +41,3 @@ const ProductPage = () => {
 };
 
 export default ProductPage;
-

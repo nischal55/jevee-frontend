@@ -3,11 +3,42 @@
 @tailwind utilities;
 
 @layer components {
-    .container {
-      @apply mx-auto max-w-full  px-3  sm:max-w-[540px]  md:max-w-[720px]  lg:max-w-[960px] xl:max-w-[1170px];
-    }
+  .container {
+    @apply mx-auto max-w-full  px-3  sm:max-w-[540px]  md:max-w-[720px]  lg:max-w-[960px] xl:max-w-[1170px];
+  }
 }
 
+@font-face {
+  font-family: 'jeeveeFont';
+  src: url('./fonts/avantgardemditctt.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'jeeveeFont2';
+  src: url('./fonts/AVGARDD_2.TTF') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'jeeveeFont3';
+  src: url('./fonts/AVGARDDO_2.TTF') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'jeeveeFont4';
+  src: url('./fonts/AVGARDN_2.TTF') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+body{
+  font-family: 'jeeveeFont4';
+}
 
 
 @layer utilities {
@@ -21,13 +52,13 @@
   
   /* Hide scrollbar for Chrome, Safari and Opera */
   .no-scrollbar::-webkit-scrollbar {
-      display: none;
+    display: none;
   }
- /* Hide scrollbar for IE, Edge and Firefox */
+  /* Hide scrollbar for IE, Edge and Firefox */
   .no-scrollbar {
-      -ms-overflow-style: none;  /* IE and Edge */
-      scrollbar-width: none;  /* Firefox */
-}
+    -ms-overflow-style: none; /* IE and Edge */
+    scrollbar-width: none; /* Firefox */
+  }
 }
 
 .slider .thumb{
