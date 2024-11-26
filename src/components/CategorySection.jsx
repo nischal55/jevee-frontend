@@ -1,12 +1,12 @@
 let categories = [
-    "https://jevee.s3.us-east-2.amazonaws.com/cms/featured-banner/6e371faf-f6d0-448c-b4c2-ffb651bed399.webp",
-    "https://jevee.s3.us-east-2.amazonaws.com/cms/featured-banner/a1f181d6-56e4-492a-a084-f03244bf936b.webp",
-    "https://jevee.s3.us-east-2.amazonaws.com/cms/featured-banner/1c47e2a5-9518-4890-96f6-1b6bfd6fed51.webp",
-    "https://jevee.s3.us-east-2.amazonaws.com/cms/featured-banner/e0258ad7-dfc6-4fda-a45f-5c09aecd7c12.webp",
-    "https://jevee.s3.us-east-2.amazonaws.com/cms/featured-banner/5bff9cb8-5191-4632-8672-52e3dddb8494.webp",
-    "https://jevee.s3.us-east-2.amazonaws.com/cms/featured-banner/d5ebd85c-15b0-4728-9809-99dce7911794.webp",
-    "https://jevee.s3.us-east-2.amazonaws.com/cms/featured-banner/e1716312-c665-49a5-8044-c385ec09d426.webp",
-    "https://jevee.s3.us-east-2.amazonaws.com/cms/featured-banner/8f5b0fa0-8151-4838-948e-1f6db201f8ea.webp"
+    "https://jevee.s3.us-east-2.amazonaws.com/cms/featured-banner/3a018d90-7940-48fe-bd5d-bf8ae926aa61.webp",
+    "https://jevee.s3.us-east-2.amazonaws.com/cms/featured-banner/8ac73169-c32e-4312-bb88-37081567cc26.webp",
+    "https://jevee.s3.us-east-2.amazonaws.com/cms/featured-banner/5436fd7f-a9c4-4662-ba7a-6495649b0bbb.webp",
+    "https://jevee.s3.us-east-2.amazonaws.com/cms/featured-banner/d38617db-607c-4949-bf22-82c830d5aaf2.webp",
+    "https://jevee.s3.us-east-2.amazonaws.com/cms/featured-banner/e8eb555d-1954-453e-a910-d24618377afa.webp",
+    "https://jevee.s3.us-east-2.amazonaws.com/cms/featured-banner/a963c045-9987-4309-b06c-e4135b8611e3.webp",
+    "https://jevee.s3.us-east-2.amazonaws.com/cms/featured-banner/12b5467c-9b0b-42c9-a2eb-f9b25da1dc99.webp",
+    "https://jevee.s3.us-east-2.amazonaws.com/cms/featured-banner/b999dafe-ac05-4635-9d93-df7e7d5f5f35.webp"
 ]
 
 import { Link } from "react-router-dom"
