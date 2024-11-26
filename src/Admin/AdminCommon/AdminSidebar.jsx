@@ -120,7 +120,19 @@ export default function AdminSidebar({ open, setOpen }) {
             name: "Dashboard",
             sub: [],
         },
-
+        {
+            href: "/admin/orders",
+            icon: <FaShoppingCart />,
+            name: "Orders",
+            sub: [
+                { name: "All Orders", href: "/admin/orders/all" },
+                { name: "Pending Orders", href: "/admin/orders/pending" },
+                { name: "Pending Orders", href: "/admin/orders/pending" },
+                { name: "Pending Orders", href: "/admin/orders/pending" },
+                { name: "Pending Orders", href: "/admin/orders/pending" },
+                { name: "Pending Orders", href: "/admin/orders/pending" },
+            ],
+        },
         {
             href: "/admin/categories",
             icon: <MdDashboard />,

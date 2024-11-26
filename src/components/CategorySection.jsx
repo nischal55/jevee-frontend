@@ -15,11 +15,9 @@ export default function CategorySection() {
         <>
             <Link>
                 <div className=" grid grid-cols-4 lg:grid-cols-8 lg:gap-6 lg:my-[40px] my-2">
-                    {categories.map((category) => {
+                    {categories.map((category,i) => {
                         return (
-                            <>
-                                <img src={category} alt="" />
-                            </>
+                                <img key={i} src={category} alt="" />
                         )
                     })}
                 </div>
