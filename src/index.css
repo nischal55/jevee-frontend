@@ -56,17 +56,7 @@ body{
   }
   /* Hide scrollbar for IE, Edge and Firefox */
   .no-scrollbar {
-    -ms-overflow-style: none; /* IE and Edge */
-    scrollbar-width: none; /* Firefox */
-  }
+      -ms-overflow-style: none;  /* IE and Edge */
+      scrollbar-width: none;  /* Firefox */
 }
-
-.slider .thumb{
-  width: 20px;
-  height: 20px;
-  cursor: grab;
-  background-color: rgb(236 72 153);
-  border: 1px solid gray;
-  border-radius: 50%;
-  top: -8px;
 }

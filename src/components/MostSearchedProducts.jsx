@@ -21,7 +21,7 @@ export default function MostSearchedProducts() {
 
     return (
         <>
-            <div className="gird grid-flow-col items-center gap-5 py-8 bg-[#F2F2F2]  bg-contain bg-top  bg-no-repeat relative bg-[url('https://jevee.s3.us-east-2.amazonaws.com/cms/featured-banner/a56a47e2-4781-4061-9dad-ffc9752a6598.webp')] sm:bg-[url('https://jevee.s3.us-east-2.amazonaws.com/cms/featured-banner/4042d9f5-43f0-4523-9c9d-8b8e3b8ea9da.webp')]">
+            <div className="gird grid-flow-col items-center gap-5 py-8 bg-[#F2F2F2]  bg-contain bg-top  bg-no-repeat relative bg-[url('https://res.cloudinary.com/ddp4pcwkv/image/upload/v1732530150/a56a47e2-4781-4061-9dad-ffc9752a6598_ty6dsa.webp')]">
                 <div className='lg:container mx-auto mb-20'>
                     <Link to={"/products"} className=' mt-8 float-right text-black mr-4 '>
                         View all

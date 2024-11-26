@@ -15,10 +15,9 @@ export default function ProductCard({ product = {} }) {
   } = product;
 
   return (
-    <div className="lg:max-w-4/5">
     <Link
       to={href}
-      className="group transition-all duration-300 border-gray-100/30 flex min-w-[214px] flex-col overflow-hidden rounded-lg border h-[385px] shadow-md bg-[#FFFFFF] text-black"
+      className="group transition-all duration-300 border-gray-100/30 flex min-w-[214px] flex-col self-center overflow-hidden rounded-lg border h-[385px] shadow-md bg-[#FFFFFF] text-black"
     >
       <div className="relative w-full h-[272px] px-2 mx-auto">
         {/* Conditionally Render Tag */}
@@ -30,7 +29,7 @@ export default function ProductCard({ product = {} }) {
 
         {/* Star Rating */}
         {rating > 0 && reviewCount > 0 && (
-          <div className="absolute z-10 bottom-2 left-2 text-black text-xs px-2 py-1 rounded-md flex items-center space-x-1">
+          <div className="absolute z-10 bottom-1 left-2 text-black text-xs px-2 py-1 rounded-md flex items-center space-x-1">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               viewBox="0 0 24 24"
@@ -47,8 +46,8 @@ export default function ProductCard({ product = {} }) {
 
         {/* Product Image */}
         <img
-          alt={name || "Product Image"} // Fallback alt text
-          src={imageUrls ? imageUrls[0] : "/default-image.jpg"} // Fallback image
+          alt={name}
+          src={imageUrls[0]}
           className="peer absolute top-0 right-0 h-full w-full object-contain"
         />
       </div>
@@ -56,11 +55,7 @@ export default function ProductCard({ product = {} }) {
         <div className="space-y-1">
           {/* Name */}
           <h3 className="text-xs sm:text-lg leading-[1.1] sm:leading-[1.2] text-2-clamp h-7 text-center sm:h-[44px] mb-1">
-            {name
-              ? name.length > 36
-                ? `${name.slice(0, 36)}...`
-                : name
-              : "Product Name"}
+            {name.length > 36 ? `${name.slice(0, 36)}...` : name}
           </h3>
           {/* Pricing */}
           <div className="text-center text-xs sm:text-base lg:text-lg xl:text-xl">
@@ -68,25 +63,18 @@ export default function ProductCard({ product = {} }) {
               <span className="text-xxs sm:text-xs lg:text-sm xl:text-base font-medium xl:font-normal">
                 NPR.
               </span>{" "}
-              {discountPrice || "0.00"}
+              {discountPrice}
             </span>
             <span className="text-[#F25CA8] font-bold border-l leading-none pl-1 ml-1 xl:text-lg">
-              {discountPercentage ? `${discountPercentage}% Off` : "0% Off"}
+              {discountPercentage}% Off
             </span>
           </div>
           <div className="text-[9px] xxs:text-xxs md:text-xs leading-none text-center space-x-1 whitespace-nowrap ">
-            <span className="line-through">
-              NPR. {price ? price.toFixed(2) : "0.00"}
-            </span>
-            <span>
-              Save NPR.{" "}
-              {price && discountPrice
-                ? (price - discountPrice).toFixed(2)
-                : "0.00"}
-            </span>
+            <span className="line-through">NPR. {price.toFixed(2)}</span>
+            <span>Save NPR. {(price - discountPrice).toFixed(2)}</span>
           </div>
         </div>
-        <div className="lg:hidden group-hover:block mb-7 mt-2">
+        <div className="lg:hidden group-hover:block mb-7 mt-2 pb-3">
           <div className="flex items-center space-x-2">
             {/* Wishlist Button */}
             <button
@@ -103,13 +91,15 @@ export default function ProductCard({ product = {} }) {
               </svg>
             </button>
             {/* Add to Cart */}
-            <button className="flex-1 bg-[#F25CA8] text-white py-2 rounded-sm hover:bg-red-600 transition">
+            <button
+              onClick={(e) => handleAddToCart(e, product)}
+              className="flex-1 bg-[#F25CA8] text-white py-2 rounded-sm hover:shadow-md hover:bg-[#F25CA8]"
+            >
               Add to Cart
             </button>
           </div>
         </div>
       </div>
     </Link>
-    </div>
   );
 }
