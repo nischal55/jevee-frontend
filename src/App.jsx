@@ -52,12 +52,12 @@
               path: "create",
               element: <CreateCategory />
             },
-            {
-              path: "profile", 
-              element: <Profile />, 
-            },
-            ]
-          },
+          ]
+        },
+        {
+          path: "profile", 
+          element: <Profile />, 
+        },
 
         ]
       },{
