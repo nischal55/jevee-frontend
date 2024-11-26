@@ -11,6 +11,7 @@
   import Profile from "./Admin/pages/profile/profile";
   import ProductPageMain from "./components/ProductBox/ProductPageMain";
 import Prescription from "./Common/Prescription";
+import Cart from "./Pages/cart";
   export default function App() {
   const router = createBrowserRouter([
       {
@@ -69,6 +70,10 @@ import Prescription from "./Common/Prescription";
         {
           path: "profile", 
           element: <Profile />, 
+        },
+        {
+          path: "cart",
+          element: <Cart/>
         },
 
         ]
