@@ -1,6 +1,6 @@
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import RootComponent from "./Common/RootComponent";
-import FeedBack from "./Pages/feedback/FeedBack";
+import FeedBack from "./Pages/feed/FeedBack";
 import Home from "./Pages/Home";
 import SellOnJevee from "./Pages/SellOnJevee";
 
