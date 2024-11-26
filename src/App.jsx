@@ -9,6 +9,7 @@
   import AdminLayout from "./Admin/AdminCommon/AdminLayout";
   import Login from "./Admin/login/login";
   import Profile from "./Admin/pages/profile/profile";
+  import ProductPageMain from "./components/ProductBox/ProductPageMain";
 
   export default function App() {
   const router = createBrowserRouter([
@@ -29,6 +30,14 @@
             path: "/feedback",
             element: <FeedBack />,
           },
+          {
+            path: "/category/:category",
+            element : <ProductPageMain />
+          },
+          {
+            path: "/category/:category/:subCategory",
+            element : <ProductPageMain />
+          }
         ],
 
       },
