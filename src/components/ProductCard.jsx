@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 
-export default function ProductCard({ product }) {
+
+export default function ProductCard({ product = {} }) {
   const {
     name,
     price,
@@ -12,13 +13,6 @@ export default function ProductCard({ product }) {
     reviewCount,
     tag,
   } = product;
-
-  function handleAddToCart(event, product) {
-    event.stopPropagation(); // Prevent the click event from propagating to the parent Link
-    event.preventDefault(); // Prevent default behavior of the Link
-    alert("Product added to cart!");
-    console.log("Added to cart:", product);
-  }
 
   return (
     <Link
