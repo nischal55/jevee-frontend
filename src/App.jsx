@@ -3,6 +3,11 @@ import RootComponent from "./Common/RootComponent";
 import FeedBack from "./Pages/feed/FeedBack";
 import Home from "./Pages/Home";
 import SellOnJevee from "./Pages/SellOnJevee";
+import AllCategories from "./Admin/pages/categories/AllCategories";
+import CreateCategory from "./Admin/pages/categories/CreateCategory";
+import Dashboard from "./Admin/pages/Dashboard";
+import AdminLayout from "./Admin/AdminCommon/AdminLayout";
+import Login from "./Admin/login/login";
 
 export default function App() {
   const router = createBrowserRouter([
@@ -24,7 +29,37 @@ export default function App() {
           element: <FeedBack />,
         },
       ],
+
     },
+    {
+      path: "/admin",
+      element: <AdminLayout />,
+      children: [
+        {
+          path: "",
+          index: true,
+          element: <Dashboard />
+        },
+        {
+          path: "product-category",
+          children: [{
+            path: "",
+            index: true,
+            element: <AllCategories />
+          },
+          {
+            path: "create",
+            element: <CreateCategory />
+          }
+          ]
+        },
+        
+      ]
+    },{
+
+      path: "/login",
+      element: <Login />
+    }
   ]);
 
   return <>{<RouterProvider router={router} />}</>;

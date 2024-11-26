@@ -1,6 +1,8 @@
 import BrandOfTheHour from "../components/BrandOfTheHour";
 import BrandOfThisSeason from "../components/BrandOfThisSeason";
+import BrandsForYou from "../components/BrandsForYou";
 import CategorySection from "../components/CategorySection";
+import ExploreGadgetsAndAccesories from "../components/ExploreGadgetsAndAccesories";
 import MostSearchedProducts from "../components/MostSearchedProducts";
 import ProductDisplay from "../components/ProductDisplay";
 import ResponsiveBanner from "../components/ResponsiveBanner";
@@ -41,6 +43,32 @@ export default function Home() {
         />
         <BrandOfThisSeason />
         <MostSearchedProducts />
+        <ResponsiveBanner
+          smallImage="https://jevee.s3.us-east-2.amazonaws.com/cms/featured-banner/c9008dc0-5d32-44d5-97f4-21c7aeb791fb.webp"
+          largeImage="https://jevee.s3.us-east-2.amazonaws.com/cms/featured-banner/b06e733b-4e25-4691-8ec5-80ae8b0afe94.webp"
+          aspectRatio="3.73 / 1"
+          className=""
+          altText="Responsive Featured Banner"
+        />
+     
+        <ResponsiveBanner
+          smallImage="https://jevee.s3.us-east-2.amazonaws.com/cms/featured-banner/226b9ffc-db2e-4bcb-b07e-81bba4c1bb1e.webp"
+          largeImage="https://jevee.s3.us-east-2.amazonaws.com/cms/featured-banner/85c1df51-1e40-44e0-9bfa-eb45943256c0.webp"
+          aspectRatio="3.73 / 1"
+          className=""
+          altText="Responsive Featured Banner"
+        />
+        <BrandsForYou />
+        <ExploreGadgetsAndAccesories
+          href={"/"}
+          title={"Explore Gadgets and Accessories"}
+          products={products}
+        />
+        <ProductDisplay
+          href={"/"}
+          title={"Best Diaper Deals"}
+          products={products}
+        />
       </div>
     </>
   );
