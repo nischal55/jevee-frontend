@@ -1,13 +1,8 @@
-import {
-  createBrowserRouter,
-  RouterProvider,
-} from "react-router-dom";
-import Home from "./Pages/Home";
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import RootComponent from "./Common/RootComponent";
-import Prescription from "./Common/Prescription";
-import ProtectedRoutes from "./Admin/AdminCommon/ProtectedRoutes";
-import AdminLayout from "./Admin/AdminCommon/AdminLayout";
-import Login from './Admin/login/login'; 
+import FeedBack from "./Pages/feed/FeedBack";
+import Home from "./Pages/Home";
+import SellOnJevee from "./Pages/SellOnJevee";
 
 export default function App() {
   const router = createBrowserRouter([
@@ -16,35 +11,21 @@ export default function App() {
       element: <RootComponent />,
       children: [
         {
-          index: true,
-          element: <Home />
+          path: "/",
+          element: <Home />,
+        },
+
+        {
+          path: "/sellonjevee",
+          element: <SellOnJevee />,
         },
         {
-          path: "prescription",
-          element: <Prescription />
-        }
-      ]
+          path: "/feedback",
+          element: <FeedBack />,
+        },
+      ],
     },
-    {
-      path: "/admin",
-      element: <ProtectedRoutes />,
-      children: [
-        {
-          path: "",
-          element: <AdminLayout />
-        }
-      ]
-    },
-    {
-      // Add a new route for the Login component
-      path: "/login",
-      element: <Login />
-    }
   ]);
 
-  return (
-    <>
-      <RouterProvider router={router} />
-    </>
-  );
+  return <>{<RouterProvider router={router} />}</>;
 }

@@ -20,7 +20,7 @@ export default function BrandOfTheHour() {
 
     return (
         <>
-            <div className="gird grid-flow-col items-center gap-5 py-8 bg-[#F2F2F2] bg-contain bg-top bg-no-repeat relative bg-[url('https://jevee.s3.us-east-2.amazonaws.com/cms/featured-banner/a3491ea9-da56-4c5b-9902-5d224abbbe43.webp')] sm:bg-[url('https://jevee.s3.us-east-2.amazonaws.com/cms/featured-banner/59bd29e0-617c-42fe-b944-1371e3f938b1.webp')]">
+            <div className="gird grid-flow-col items-center gap-5 py-8 bg-[#F2F2F2] bg-contain bg-top bg-no-repeat relative bg-[url('https://res.cloudinary.com/ddp4pcwkv/image/upload/v1732530033/996e1677-75be-41cd-8fa6-7767db698a47_ewyfx5.webp')] sm:bg-[url('https://res.cloudinary.com/ddp4pcwkv/image/upload/v1732530011/0f7d2889-637a-44a2-9e2c-325279c4fffa_d4svqu.webp')]">
                 <div className="lg:container mx-auto mb-20">
                     <Link to="/products" className="mt-8 float-right text-black mr-4">
                         View all

@@ -12,12 +12,19 @@ const AdminHeader = ({ setOpen, isSidebarOpen }) => {
 
   return (
     <div className="main-header">
+     {isSidebarOpen && (
+  <div
+    className="overlay lg:hidden"
+    onClick={() => setOpen(false)}
+  ></div>
+)}
+
       <div
-        className={`fixed top-0 left-0 bg-[#6777EF] h-16 flex items-center justify-between transition-all duration-300 ${
-          isSidebarOpen ? "pl-64" : "pl-20"
+        className={`  top-0 left-0 bg-[#6777EF] h-28 flex items-center justify-between transition-all duration-300 ${
+          isSidebarOpen ? "lg:pl-64" : "lg:pl-20"
         } w-full`}
       >
-        <div className="flex items-center">
+        <div className="flex items-center flex-wrap">
           <button
             className="text-gray-300 hover:text-white focus:outline-none text-4xl px-4"
             onClick={() => setOpen((prev) => !prev)}
@@ -25,7 +32,7 @@ const AdminHeader = ({ setOpen, isSidebarOpen }) => {
             &#9776;
           </button>
         </div>
-        <div className="flex items-center gap-7 relative  ">
+        <div className="flex items-center gap-7 relative">
           <Link to={"/"} className="flex items-center gap-1 text-white text-lg">
             <FaHome />
             visit website
@@ -38,7 +45,7 @@ const AdminHeader = ({ setOpen, isSidebarOpen }) => {
             />
           </Link>
           <button
-            className="text-gray-300  hover:text-white mr-8 focus:outline-none flex items-center gap-2"
+            className="text-gray-300 hover:text-white mr-8 focus:outline-none flex items-center gap-2"
             onClick={handleProfileMenuOpen}
           >
             <span className="hidden md:block">Admin</span>
@@ -47,10 +54,10 @@ const AdminHeader = ({ setOpen, isSidebarOpen }) => {
             </span>
           </button>
           {isMenuOpen && (
-            <div className="absolute right-4 top-10 w-48 bg-white rounded-md shadow-lg py-1 z-20">
+            <div className="absolute right-4 top-16 w-48 bg-white rounded-md shadow-lg  py-1 z-10">
               <Link
                 to={"/admin"}
-                className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+                className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 "
               >
                 Profile
               </Link>
