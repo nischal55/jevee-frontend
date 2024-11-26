@@ -10,7 +10,7 @@
   import Login from "./Admin/login/login";
   import Profile from "./Admin/pages/profile/profile";
   import ProductPageMain from "./components/ProductBox/ProductPageMain";
-
+import Prescription from "./Common/Prescription";
   export default function App() {
   const router = createBrowserRouter([
       {
@@ -23,7 +23,7 @@
           },
 
           {
-            path: "/sellonjevee",
+            path: "/vendor-enrollment",
             element: <SellOnJevee />,
           },
           {
@@ -37,6 +37,9 @@
           {
             path: "/category/:category/:subCategory",
             element : <ProductPageMain />
+          },{
+            path:"prescription",
+            element:<Prescription />
           }
         ],
 
