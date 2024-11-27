@@ -38,7 +38,7 @@ function Header() {
   const totalItems = alphabets.length;
   const visibleAlphabets = alphabets.slice(currentIndex, currentIndex + itemsPerPage)
 
-const [isLoggedIn, setIsLoggedIn] = useState(false)
+const [isLoggedIn, setIsLoggedIn] = useState(true)
 const user = {}
 
   useEffect(() => {
@@ -108,8 +108,8 @@ const user = {}
             </Link>
           </div>
           <ul className='flex items-center justify-between col-span-3 md:col-span-3 lg:col-span-10'>
-            <li className='hidden lg:flex'><h2 className='font-bold'>CATEGORIES</h2></li>
-            <li className='cursor-pointer relative group hidden lg:flex flex-col'><h2 className='font-bold'>BRANDS</h2>
+            <li className='hidden lg:flex'><h2 className='font-bold text-sm'>CATEGORIES</h2></li>
+            <li className='cursor-pointer relative group hidden lg:flex flex-col'><h2 className='font-bold text-sm'>BRANDS</h2>
 
               <ul className='transform -translate-x-1/2 -translate-y-1/2 top-[150px] left-1/2 w-[420px] absolute hidden group-hover:flex flex-col justify-center pt-10 z-30 px-4 bg-white'>
                 <div className='flex items-center border p-2 rounded-full'>
@@ -195,7 +195,7 @@ const user = {}
                 <li className='flex py-2 px-6 gap-4 items-center border-b hover:bg-[#F4F5F7]'><CiLocationOn className='text-xl' /><h2>My Addresses</h2></li>
                 <li className='flex py-2 px-6 gap-4 items-center border-b hover:bg-[#F4F5F7]'><CiUnlock className='text-xl' /><h2>Change Password</h2></li>
                 <li className='flex py-2 px-6 gap-4 items-center border-b hover:bg-[#F4F5F7]'><LiaPhoneVolumeSolid className='text-xl' /><h2>Contact Us</h2></li>
-                  <li className='flex py-2 px-6 gap-4 items-center border-b hover:bg-[#F4F5F7]'><HiOutlineInformationCircle className='text-xl' /><h2>About Us</h2></li>
+                  <Link to="/about" className='flex py-2 px-6 gap-4 items-center border-b hover:bg-[#F4F5F7]'><HiOutlineInformationCircle className='text-xl' /><h2>About Us</h2></Link>
                   <li className='flex py-2 px-6 gap-4 items-center border-b hover:bg-[#F4F5F7]'><MdOutlineNoteAlt className='text-xl' /><h2>Terms & Conditions</h2></li>
                   <li className='flex py-2 px-6 gap-4 items-center border-b hover:bg-[#F4F5F7]'><GiNotebook className='text-xl' /><h2>Policies</h2></li>
                   <li className=''>
@@ -218,7 +218,7 @@ const user = {}
                   </li>
                   <li className='flex py-2 px-6 gap-4 items-center border-b hover:bg-[#F4F5F7]' onClick={() => setShowSignUp(true)}><FaRegUser className='text-xl' /><h2>Join Jeevee</h2></li>
                   <li className='flex py-2 px-6 gap-4 items-center border-b hover:bg-[#F4F5F7]'><LiaPhoneVolumeSolid className='text-xl' /><h2>Contact Us</h2></li>
-                  <li className='flex py-2 px-6 gap-4 items-center border-b hover:bg-[#F4F5F7]'><HiOutlineInformationCircle className='text-xl' /><h2>About Us</h2></li>
+                  <Link to="/about" className='flex py-2 px-6 gap-4 items-center border-b hover:bg-[#F4F5F7]'><HiOutlineInformationCircle className='text-xl' /><h2>About Us</h2></Link>
                   <li className='flex py-2 px-6 gap-4 items-center border-b hover:bg-[#F4F5F7]'><MdOutlineNoteAlt className='text-xl' /><h2>Terms & Conditions</h2></li>
                   <li className='flex py-2 px-6 gap-4 items-center border-b hover:bg-[#F4F5F7]'><GiNotebook className='text-xl' /><h2>Policies</h2></li>
                   <li className=''>
@@ -241,7 +241,7 @@ const user = {}
             </li>
             <li className='cursor-pointer'>
             {
-  isLoggedIn ? <Link><BsCart2 className='text-2xl cursor-pointer' /></Link> : 
+  isLoggedIn ? <Link to="/cart"><BsCart2 className='text-2xl cursor-pointer' /></Link> : 
  <BsCart2 onClick={() => setShowLogin(true)} className='text-2xl' />
 }
             </li>
