@@ -604,10 +604,10 @@ function ShowLinks({ category }) {
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
     >
-      <h3 className="cursor-pointer text-nowrap text-sm">{category.name}</h3>
+      <h3 className="cursor-pointer text-nowrap text-sm hover:border-b-[#F25CA8] hover:border-b-2 hover:text-blue-500">{category.name}</h3>
 
       {/* {isHovered && ( */}
-      <div className=" hidden group-hover:flex absolute top-7 left-0 bg-white shadow-lg p-4 w-full z-30" >
+      <div className=" hidden group-hover:flex absolute top-8 left-0 bg-white shadow-lg p-4 w-full z-30" >
         <div className="flex flex-nowrap overflow-x-auto space-x-4 h-fit max-w-full no-scrollbar relative" ref={categoryScroll}>
           <button
             className='mx-2 z-10 fixed left-12 top-1/2 transform -translate-y-1/2 bg-white hover:bg-gray-200 shadow-md p-2 rounded-full'
@@ -621,10 +621,10 @@ function ShowLinks({ category }) {
               key={index}
               className={`flex-none w-60 h-96   mb-4  rounded-md p-2 ${index % 2 === 0 ? 'bg-white' : 'bg-gray-300'}`}
             >
-              <h4 className="font-semibold underline text-sm">{subcategory.name}</h4>
+              <h4 className="font-semibold underline text-sm hover:decoration-[#F25CA8] cursor-pointer hover:text-blue-500">{subcategory.name}</h4>
               <ul className="text-sm mt-2">
                 {subcategory.products.map((product, prodIndex) => (
-                  <li key={prodIndex} className="text-gray-700">
+                  <li key={prodIndex} className="text-gray-700 hover:text-blue-500 cursor-pointer py-1">
                     {product}
                   </li>
                 ))}

@@ -11,7 +11,7 @@ function Footer() {
           <div className="flex items-center gap-2 w-[270px]">
             <div className="w-[50px] h-[50px] bg-cover mt-2">
               <img
-                src="../payment-option.webp"
+                src="https://static.thenounproject.com/png/1106292-200.png"
                 alt=""
                 className="h-full w-full filter invert"
               />
@@ -25,7 +25,7 @@ function Footer() {
           <div className="flex items-center gap-2 w-[270px]">
             <div className="w-[50px] h-[55px] bg-cover mt-2">
               <img
-                src="../genuine.png"
+                src="https://www.pikpng.com/pngl/b/535-5351468_png-file-svg-genuine-icon-clipart.png"
                 alt=""
                 className="h-full w-full filter invert"
               />
@@ -36,7 +36,7 @@ function Footer() {
             </div>
           </div>
 
-          <div className="flex items-center gap-2 w-[270px]">
+          <div className="flex items-center gap-2 w-[280px]">
             <GoTag className="text-5xl mt-2" />
             <div>
               <h2 className="text-2xl font-semibold">1500 Brands</h2>
@@ -48,10 +48,10 @@ function Footer() {
             <h2 className="text-sm font-semibold">Available on</h2>
             <Link className="flex gap-2">
               <div className="h-[41px] w-[127px]">
-                <img src="../download-01.png" alt="" />
+                <img src="https://www.jeevee.com/_next/static/media/android.9df413da.png" alt="" />
               </div>
               <Link className="h-[41px] w-[127px]">
-                <img src="../download-02.png" alt="" />
+                <img src="https://www.jeevee.com/_next/static/media/ios.e6a69aba.png" alt="" />
               </Link>
             </Link>
           </div>
@@ -63,7 +63,7 @@ function Footer() {
         <div className="container flex flex-col md:flex-row md:justify-between py-8 text-[#DEDDDC] gap-y-5">
           <div>
             <div className="w-[150px] h-[31px] bg-cover">
-              <img src="../logo_white.svg" alt="" />
+              <img src="https://www.jeevee.com/_next/static/media/logo_white.1804497c.svg" alt="" />
             </div>
             <div className="mt-6 flex flex-col gap-3">
               <p>Jeevee Health Pvt. Ltd.</p>
@@ -82,16 +82,16 @@ function Footer() {
             <h2 className="font-semibold text-white">Connect with Us</h2>
             <div className="flex gap-2">
               <Link className="h-9 w-9 bg-cover">
-                <img src="../links/facebook-link.svg" alt="" />
+                <img src="https://www.jeevee.com/_next/static/media/fb.270cfdf8.svg" alt="" />
               </Link>
               <Link className="h-9 w-9 bg-cover">
-                <img src="../links/insta-link.svg" alt="" />
+                <img src="https://www.jeevee.com/_next/static/media/insta.8eeb60c9.svg" alt="" />
               </Link>
               <Link className="h-9 w-9 bg-cover">
-                <img src="../links/tiktok-link.svg" alt="" />
+                <img src="https://www.jeevee.com/_next/static/media/tiktok.2ebf7d53.svg" alt="" />
               </Link>
               <Link className="h-9 w-9 bg-cover">
-                <img src="../links/youtube-link.svg" alt="" />
+                <img src="https://www.jeevee.com/_next/static/media/youtube.925dccd7.svg" alt="" />
               </Link>
             </div>
             <div className="flex flex-col gap-3">
@@ -99,10 +99,10 @@ function Footer() {
               <div className="flex gap-2">
                 <p className="cursor-pointer">+977 98011-65960</p>
                 <Link className="h-[22px] w-[22px] bg-cover">
-                <img src="../links/viber.svg" alt="" />
+                <img src="https://www.jeevee.com/_next/static/media/viber_circular.4b38e4a4.svg" alt="" />
               </Link>
               <Link className="h-[22px] w-[22px] bg-cover">
-                <img src="../links/whats_app.svg" alt="" />
+                <img src="https://www.jeevee.com/_next/static/media/whats_app.cbe8cef3.svg" alt="" />
               </Link>
               </div>
               <h2 className="cursor-pointer">01-5970680</h2>
