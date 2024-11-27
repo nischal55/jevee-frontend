@@ -11,6 +11,11 @@ import Login from "./Admin/login/login";
 import Profile from "./Admin/pages/profile/profile";
 import ProductPageMain from "./components/ProductBox/ProductPageMain";
 import Prescription from "./Common/Prescription";
+import CreateProduct from "./Admin/pages/product/CreateProduct";
+import CreateChildCategory from "./Admin/pages/categories/CreateChildCategory";
+import AllChildCategories from "./Admin/pages/categories/AllChildCategories";
+import CreateSubCategory from "./Admin/pages/categories/CreateSubCategory";
+import AllSubCategories from "./Admin/pages/categories/AllSubCategories";
 export default function App() {
   const router = createBrowserRouter([
     {
@@ -70,6 +75,48 @@ export default function App() {
           path: "profile",
           element: <Profile />,
         },
+        , {
+          path: "product-sub-category",
+          children: [
+            {
+              path: "",
+              index: true,
+              element: <AllSubCategories />
+            }, {
+              path: "create",
+              element: <CreateSubCategory />
+            }
+          ]
+
+        },
+        , {
+          path: "product-child-category",
+          children: [
+            {
+              path: "",
+              index: true,
+              element: <AllChildCategories />
+            }, {
+              path: "create",
+              element: <CreateChildCategory />
+            }
+          ]
+
+        },
+        {
+          path:"product",
+          children:[{
+            path:"",
+            index:true,
+            element:<div>products</div>
+          },
+        {
+          path:"create",
+          element:<CreateProduct />
+        }
+        ]
+        }
+        
 
       ]
     },
