@@ -16,6 +16,7 @@ import CreateChildCategory from "./Admin/pages/categories/CreateChildCategory";
 import AllChildCategories from "./Admin/pages/categories/AllChildCategories";
 import CreateSubCategory from "./Admin/pages/categories/CreateSubCategory";
 import AllSubCategories from "./Admin/pages/categories/AllSubCategories";
+import Cart from "./Pages/cart/Cart";
 export default function App() {
   const router = createBrowserRouter([
     {
@@ -45,6 +46,9 @@ export default function App() {
         }, {
           path: "prescriptions",
           element: <Prescription />
+        },{
+          path: "cart",
+          element : <Cart/>
         }
       ],
 
@@ -128,3 +132,4 @@ export default function App() {
   ]);
   return <>{<RouterProvider router={router} />}</>;
 }
+
