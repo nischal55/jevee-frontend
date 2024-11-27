@@ -47,7 +47,7 @@ export default function ProductCard({ product = {} }) {
   return (
     <Link
       to={href}
-      className="group transition-all duration-300 border-gray-100/30 flex min-w-[214px] flex-col self-center overflow-hidden rounded-lg border h-[385px] shadow-md bg-[#FFFFFF] text-black"
+      className="group transition-all duration-300 border-gray-100/30 flex min-w-[161px] lg:min-w-[214px] flex-col self-center overflow-hidden rounded-lg border h-[312px] lg:h-[385px] shadow-md bg-[#FFFFFF] text-black"
     >
       <div className="relative w-full h-[272px] px-2 mx-auto">
         {/* Conditionally Render Tag */}
