@@ -1,164 +1,54 @@
-import React, { useRef, useState } from 'react';
-import { FaChevronLeft, FaChevronRight } from "react-icons/fa";
+import React, { useRef, useState } from 'react'
+import ProductCard from './ProductCard';
+import { Link } from 'react-router-dom';
+const ProductDisplay = ({ title, href, products }) => {
+    const carouselRef = useRef(null);
 
-function Categories() {
-  const [hoveredCategory, setHoveredCategory] = useState(null);
-  const carouselRef = useRef(null);
+    const scrollNext = () => {
+        if (carouselRef.current) {
+            carouselRef.current.scrollBy({ left: 300, behavior: 'smooth' });
+        }
+    };
 
-  const categories = [
-    {
-      name: 'Skin',
-      subCategories: [
-        {
-          name: "Cleansers",
-          products: ["Cleanser", "Face Wash", "Scrubs & Exfollators", "Facial Wipes", "Makeup Remover"]
-        },
-      ]
-    },
-    {
-      name: 'Hair',
-      subCategories: [
-        {
-          name: "Cleansers",
-          products: ["Shampoo", "Conditioner", "Hair Masks", "Hair Oil"]
-        },
-      ]
-    },
-    {
-      name: 'Fragrances',
-      subCategories: [
-        {
-          name: "Perfumes",
-          products: ["Eau de Parfum", "Eau de Toilette", "Body Sprays"]
-        },
-      ]
-    },
-    {
-      name: 'Makeup',
-      subCategories: [
-        {
-          name: "Face Makeup",
-          products: ["Foundation", "Concealer", "Blush", "Bronzer"]
-        },
-      ]
-    },
-    {
-      name: "Kid's Fashion",
-      subCategories: [
-        {
-          name: "Clothing",
-          products: ["T-shirts", "Dresses", "Shoes", "Accessories"]
-        },
-      ]
-    },
-    {
-      name: 'Gadgets & Accessories',
-      subCategories: [
-        {
-          name: "Accessories",
-          products: ["Smartwatches", "Headphones", "Chargers", "Cables"]
-        },
-      ]
-    },
-    {
-      name: 'Home Appliances & Television',
-      subCategories: [
-        {
-          name: "Home Appliances",
-          products: ["Microwaves", "Air Conditioners", "Washing Machines"]
-        },
-      ]
-    },
-    {
-      name: 'Women Fashion',
-      subCategories: [
-        {
-          name: "Clothing",
-          products: ["Sarees", "Dresses", "Jewelry", "Shoes"]
-        },
-      ]
-    },
-    {
-      name: 'Mom & Baby',
-      subCategories: [
-        {
-          name: "Baby Care",
-          products: ["Diapers", "Baby Food", "Toys", "Strollers"]
-        },
-      ]
-    },
-    {
-      name: 'Personal Care',
-      subCategories: [
-        {
-          name: "Grooming",
-          products: ["Razors", "Shaving Cream", "Body Lotions", "Soaps"]
-        },
-      ]
-    },
-  ];
+    const scrollPrev = () => {
+        if (carouselRef.current) {
+            carouselRef.current.scrollBy({ left: -300, behavior: 'smooth' });
+        }
+    };
 
-  const scrollNext = () => {
-    if (carouselRef.current) {
-      carouselRef.current.scrollBy({ left: 300, behavior: 'smooth' });
-    }
-  };
+    return (
+        <div className="gird  grid-flow-col items-center gap-5 py-8  bg-contain bg-top  bg-no-repeat relative ">
+            <div className='lg:container mx-auto flex justify-between'>
+                <p className='text-lg sm:text-[22px] font-bold sm:font-medium truncate'>{title}</p>
+                <Link to={href} className='text-[#60A5FA] mx-4  text-nowrap' >
+                    View all
+                </Link>
 
-  const scrollPrev = () => {
-    if (carouselRef.current) {
-      carouselRef.current.scrollBy({ left: -300, behavior: 'smooth' });
-    }
-  };
+            </div>
+            <div className='lg:container mx-auto'>
 
-  return (
-    <div className='h-10 hidden lg:flex'>
-      <div className='container relative'>
-        <div className='flex justify-center items-center'>
-          <button
-            className='mx-2 absolute left-0 top-1/2 transform -translate-y-1/2 bg-gray-200 p-2 rounded-full z-10'
-            onClick={scrollPrev}
-          >
-            <FaChevronLeft />
-          </button>
-          <div
-            ref={carouselRef}
-            className='flex py-2 overflow-auto gap-x-4 text-sm whitespace-nowrap scroll-smooth min-h-10'
-          >
-            {categories.map((category, index) => (
-              <div
-                key={index}
-                className='px-2 cursor-pointer'
-                onMouseEnter={() => setHoveredCategory(category.name)}
-                onMouseLeave={() => setHoveredCategory(null)}
-              >
-                {category.name}
-                {hoveredCategory === category.name && (
-                  <div className='my-1'>
-                    {category.subCategories.map((subcategory, subIndex) => (
-                      <div key={subIndex}>
-                        <h3 className="font-semibold my-3 underline bg-red-300">{subcategory.name}</h3>
-                        <ul>
-                          {subcategory.products.map((product, prodIndex) => (
-                            <li key={prodIndex}>{product}</li>
-                          ))}
-                        </ul>
-                      </div>
+                <div className="flex overflow-x-auto gap-3 justify-start w-full max-w-full mt-4 no-scrollbar" ref={carouselRef} >
+                    {products.map((product, i) => (
+                        <ProductCard key={i} product={product} />
                     ))}
-                  </div>
-                )}
-              </div>
-            ))}
-          </div>
-          <button
-            className='mx-2 absolute right-0 top-1/2 transform -translate-y-1/2 bg-gray-200 p-2 rounded-full z-10'
-            onClick={scrollNext}
-          >
-            <FaChevronRight />
-          </button>
+                </div>
+            </div>
+
+            <div className="absolute top-[50%] left-0 right-0 hidden   transform w-full -translate-y-1/2 lg:flex justify-between mx-auto ">
+                <div
+                    onClick={scrollPrev}
+                    className="transition text-black p-1.5 bg-white rounded-full hover:bg-neutral-light cursor-pointer shadow-md w-8 h-8 select-none flex items-center justify-center"
+                >
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 720" className="w-[20px]">
+                        <path fill="var(--color-dark)" d="M319.4,334.5l212-186.6 c18.6-16.4,16-41.6-5.9-55.4l0,0c-20.5-12.9-50.4-11-67.8,4.4L188.5,334.5c-16.5,14.5-16.5,36.4,0,51l269.2,237.6 c17.5,15.4,47.3,17.4,67.8,4.4l0,0c21.8-13.8,24.5-39,5.9-55.4l-212-186.6C302.9,371,302.9,349,319.4,334.5z"></path>
+                    </svg>
+                </div>
+                <div onClick={scrollNext} className="transition  text-black p-1.5 bg-white rounded-full hover:bg-neutral-light cursor-pointer shadow-md w-8 h-8  lg:block   38px]  select-none 2xl leading-none flex items-center justify-center"><svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" viewBox="0 0 720 720" enableBackground="new 0 0 720 720" className="w-[20px]"><path fill="var(--color-dark)" d="M400.6,385.5l-212,186.6 c-18.6,16.4-16,41.6,5.9,55.4l0,0c20.5,12.9,50.4,11,67.8-4.4l269.2-237.6c16.5-14.5,16.5-36.4,0-51L262.3,96.9 c-17.5-15.4-47.3-17.4-67.8-4.4l0,0c-21.8,13.8-24.5,39-5.9,55.4l212,186.6C417.1,349,417.1,371,400.6,385.5z"></path></svg></div>
+            </div>
         </div>
-      </div>
-    </div>
-  );
+
+
+    )
 }
 
-export default Categories;
+export default ProductDisplay
