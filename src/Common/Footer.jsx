@@ -74,7 +74,7 @@ function Footer() {
 
           <div className="flex flex-col gap-3 mt-3">
             <h2 className="font-semibold text-white">Get to Know Us</h2>
-            <Link className="pl-2">About Us</Link>
+            <Link to="/about" className="pl-2">About Us</Link>
             <Link className="pl-2">Sell on Jeevee</Link>
           </div>
 
