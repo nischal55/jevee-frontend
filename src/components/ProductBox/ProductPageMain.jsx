@@ -3,6 +3,7 @@ import { useParams } from 'react-router-dom';
 import ProductPage from './ProductPage';
 import FilterComp from '../Filter/FilterComp';
 import products from '../../data/product';  
+import SortFilterButton from './ResponsiveDD/SortFilterButton';
 
 const ProductPageMain = () => {
   const { category, subCategory } = useParams();  
@@ -34,15 +35,25 @@ const ProductPageMain = () => {
         {` ${ subCategory ?   " > " + subCategory.charAt(0).toUpperCase() + subCategory.slice(1): ''}`}
       </p>
 
-      <div className="flex bg-white mx-16 pr-9">
-        <div className="">
+      <div className="flex bg-white mx-1 lg:mx-16 pr-9">
+      
+        <div className="hidden lg:block">
           
-          <FilterComp
+
+          
+         <FilterComp
             setFilteredBrands={setFilteredBrands}
             setFilteredSizes={setFilteredSizes}
             setFilteredPrice={setFilteredPrice}
           />
-        </div>
+</div>
+
+<div className="flex flex-col">
+  <div className="block lg:hidden">
+          <SortFilterButton/>
+          </div>
+        
+
 
         <ProductPage
           filteredBrands={filteredBrands}
@@ -50,6 +61,7 @@ const ProductPageMain = () => {
           filteredPrice={filteredPrice}
           filteredProducts={filteredProducts} 
         />
+        </div>
       </div>
     </section>
   );
