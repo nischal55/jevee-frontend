@@ -38,7 +38,7 @@ import Prescription from "./Common/Prescription";
             path: "/category/:category/:subCategory",
             element : <ProductPageMain />
           },{
-            path:"prescription",
+            path:"prescriptions",
             element:<Prescription />
           }
         ],
