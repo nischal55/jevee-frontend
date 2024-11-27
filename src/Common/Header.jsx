@@ -159,7 +159,7 @@ const user = {}
               </div>
             </li>
             <li className=''>
-              <Link to="/prescription" className='hidden lg:flex bg-[#F25CA8] items-center px-4 rounded-md gap-2 py-[1px] text-white'>
+              <Link to="/prescriptions" className='hidden lg:flex bg-[#F25CA8] items-center px-4 rounded-md gap-2 py-[1px] text-white'>
 
                 <IoCameraOutline className='text-4xl' /> <p className='text-[12px]'>Upload <br /><span className='font-semibold text-sm'>Prescriptions</span></p>
               </Link>
