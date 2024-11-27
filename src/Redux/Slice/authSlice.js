@@ -1,5 +1,5 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
-
+import api from "../../axios";
 const initialState = {
   isAuthenticated: false,
   user: null,
@@ -7,25 +7,22 @@ const initialState = {
   error: null,
 };
 
-export const login = createAsyncThunk(
-  "auth/login",
-  async (formData, { rejectWithValue }) => {
-    try {
-      const fakeApiResponse = {
-        id: 1,
-        name: "Rohan karki",
-        email: "reeyaskarki@gmail.com",
-        role: "admin",
-      };
-      await new Promise((resolve) => setTimeout(resolve, 1000));
+export const login = createAsyncThunk("auth/login", async (formData) => {
 
-      return fakeApiResponse;
-    } catch (error) {
-      return rejectWithValue("Failed to login");
-    }
-  }
-);
+  console.log({ formData });
+  const res = await api.post(`/api/user/login`, formData, {
+    withCredentials: true,
+  });
 
+  return res.data;
+});
+export const checkAuth = createAsyncThunk("auth/checkAuth", async () => {
+  const res = await api.get(`/api/user/checktoken`, {
+    withCredentials: true,
+  });
+  console.log(res.data)
+  return res.data;
+})
 const authSlice = createSlice({
   name: "auth",
   initialState,

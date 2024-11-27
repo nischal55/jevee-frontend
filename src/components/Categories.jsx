@@ -1,13 +1,68 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import { FaChevronLeft, FaAngleRight } from "react-icons/fa6";
 
 function Categories() {
   const [cur, setCurr] = useState(0)
   const [hoveredCategory, setHoveredCategory] = useState(null);
+  const carouselRef = useRef(null);
   const categories = [
     {
       name: 'Skin',
       subCategories: [
+        {
+          name: "Cleansers",
+          products: [
+            "Cleanser", "Face Wash", "Scrubs & Exfollators", "Facial Wipes", "Makeup Remover"
+          ]
+        },
+        {
+          name: "Cleansers",
+          products: [
+            "Cleanser", "Face Wash", "Scrubs & Exfollators", "Facial Wipes", "Makeup Remover"
+          ]
+        },
+        {
+          name: "Cleansers",
+          products: [
+            "Cleanser", "Face Wash", "Scrubs & Exfollators", "Facial Wipes", "Makeup Remover"
+          ]
+        },
+        {
+          name: "Cleansers",
+          products: [
+            "Cleanser", "Face Wash", "Scrubs & Exfollators", "Facial Wipes", "Makeup Remover"
+          ]
+        },
+        {
+          name: "Cleansers",
+          products: [
+            "Cleanser", "Face Wash", "Scrubs & Exfollators", "Facial Wipes", "Makeup Remover"
+          ]
+        },
+        {
+          name: "Cleansers",
+          products: [
+            "Cleanser", "Face Wash", "Scrubs & Exfollators", "Facial Wipes", "Makeup Remover"
+          ]
+        },
+        {
+          name: "Cleansers",
+          products: [
+            "Cleanser", "Face Wash", "Scrubs & Exfollators", "Facial Wipes", "Makeup Remover"
+          ]
+        },
+        {
+          name: "Cleansers",
+          products: [
+            "Cleanser", "Face Wash", "Scrubs & Exfollators", "Facial Wipes", "Makeup Remover"
+          ]
+        },
+        {
+          name: "Cleansers",
+          products: [
+            "Cleanser", "Face Wash", "Scrubs & Exfollators", "Facial Wipes", "Makeup Remover"
+          ]
+        },
         {
           name: "Cleansers",
           products: [
@@ -27,7 +82,7 @@ function Categories() {
       name: 'Hair',
       subCategories: [
         {
-          name: "Cleansers",
+          name: "mindoxril",
           products: [
             "Cleanser", "Face Wash", "Scrubs & Exfollators", "Facial Wipes", "Makeup Remover"
           ]
@@ -45,7 +100,7 @@ function Categories() {
       name: 'Fragrances',
       subCategories: [
         {
-          name: "Cleansers",
+          name: "scent",
           products: [
             "Cleanser", "Face Wash", "Scrubs & Exfollators", "Facial Wipes", "Makeup Remover"
           ]
@@ -63,7 +118,7 @@ function Categories() {
       name: 'Makeup',
       subCategories: [
         {
-          name: "Cleansers",
+          name: "mak",
           products: [
             "Cleanser", "Face Wash", "Scrubs & Exfollators", "Facial Wipes", "Makeup Remover"
           ]
@@ -81,7 +136,7 @@ function Categories() {
       name: "Kid's Fashion",
       subCategories: [
         {
-          name: "Cleansers",
+          name: "clothes",
           products: [
             "Cleanser", "Face Wash", "Scrubs & Exfollators", "Facial Wipes", "Makeup Remover"
           ]
@@ -185,69 +240,100 @@ function Categories() {
       ]
     },
   ]
-  const [itemsPerPage, setItemsPerPage] = useState(9);
+  const scrollNext = () => {
+    if (carouselRef.current) {
+      carouselRef.current.scrollBy({ left: 300, behavior: 'smooth' });
+    }
+  };
 
-  useEffect(() => {
-    function updateItemsPerPage() {
-      if (window.innerWidth > 1024) {
-        setItemsPerPage(9);
-      } else if (window.innerWidth === 1024) {
-        setItemsPerPage(7);
-      }
-    };
-    updateItemsPerPage();
-    window.addEventListener('resize', updateItemsPerPage);
-    return window.removeEventListener('resize', updateItemsPerPage);
-  }, []);
-
-  const currentCategories = categories.slice(cur, cur + itemsPerPage);
-  const disablePrev = cur === 0;
-  const disableNext = cur + itemsPerPage >= categories.length;
-
-  function prev() {
-    setCurr((curr) => Math.max(0, curr - 1));
-  }
-
-  function next() {
-    setCurr((curr) => Math.min(categories.length - itemsPerPage, curr + 1));
-  }
-
+  const scrollPrev = () => {
+    if (carouselRef.current) {
+      carouselRef.current.scrollBy({ left: -300, behavior: 'smooth' });
+    }
+  };
   return (
-    <div className='h-10 hidden lg:flex'>
-      <div className='container relative'>
-        <div className='flex justify-center items-center overflow-hidden '>
-          <div className='flex py-2 justify-between gap-x-4 text-sm min-h-10 z-20'>
-            {currentCategories.map((category, index) => (
-              <div key={index} className='px-2 cursor-pointer' onMouseEnter={() => setHoveredCategory(category.name)}
-                onMouseLeave={() => setHoveredCategory(null)}
-              >
-                {category.name}
-                {
-                  hoveredCategory === category.name && <div className='my-1'>
-                    {category.subCategories.map((subcategory, index) => <div key={index}>
-                      <h3 className="font-semibold my-3 underline">{subcategory.name}</h3>
-                      <ul>
-                        {subcategory.products.map((product, prodIndex) => (
-                          <li key={prodIndex} className="">{product}</li>
-                        ))}
-                      </ul>
-                    </div>)}
-                  </div>
-                }
-              </div>
-            ))}
-          </div>
-          <button className='mx-2 absolute left-0 top-1/2 transform -translate-y-1/2 bg-gray-200 p-2 rounded-full' onClick={prev} disabled={disablePrev}>
+    <div className="container relative mx-auto hidden lg:block">
+      <button className='mx-2 z-10 absolute -left-4 top-1/2 transform -translate-y-1/2 bg-white hover:bg-gray-200 shadow-md p-2 rounded-full' onClick={scrollPrev}
+
+      >
+        <FaChevronLeft />
+      </button>
+      <div
+        ref={carouselRef}
+        className="mx-4 flex overflow-x-auto gap-8 no-scrollbar"
+      >
+        {categories.map((category, index) => (
+          <ShowLinks category={category} key={index} />
+        ))}
+      </div>
+      <button
+        className="absolute right-2 top-1/2 transform -translate-y-1/2 bg-white hover:bg-gray-200 shadow-md p-2 rounded-full"
+        onClick={scrollNext}
+      >
+        <FaAngleRight />
+      </button>
+    </div>
+  );
+}
+
+export default Categories;
+
+function ShowLinks({ category }) {
+  const [isHovered, setIsHovered] = useState(false);
+  const categoryScroll = useRef(null)
+  const scrollNext = () => {
+    if (categoryScroll.current) {
+      categoryScroll.current.scrollBy({ left: 300, behavior: 'smooth' });
+    }
+  };
+
+  const scrollPrev = () => {
+    if (categoryScroll.current) {
+      categoryScroll.current.scrollBy({ left: -300, behavior: 'smooth' });
+    }
+  };
+  return (
+    <div
+      className=" group"
+      onMouseEnter={() => setIsHovered(true)}
+      onMouseLeave={() => setIsHovered(false)}
+    >
+      <h3 className="cursor-pointer text-nowrap">{category.name}</h3>
+
+      {/* {isHovered && ( */}
+      <div className=" hidden group-hover:flex absolute top-6 left-0 bg-white shadow-lg p-4 w-full z-50" >
+        <div className="flex flex-nowrap overflow-x-auto space-x-4 h-fit max-w-full no-scrollbar relative" ref={categoryScroll}>
+          <button
+            className='mx-2 z-10 fixed  top-1/2 transform -translate-y-1/2 bg-white hover:bg-gray-200 shadow-md p-2 rounded-full'
+            onClick={scrollPrev}
+
+          >
             <FaChevronLeft />
           </button>
-          <button className='mx-2 absolute right-0 top-1/2 transform -translate-y-1/2 h-8 w-8 bg-gray-200 p-2 rounded-full' onClick={next}
-            disabled={disableNext}>
+          {category.subCategories.map((subcategory, index) => (
+            <div
+              key={index}
+              className={`flex-none w-60 h-96   mb-4  rounded-md p-2 ${index % 2 === 0 ? 'bg-white' : 'bg-gray-300'}`}
+            >
+              <h4 className="font-semibold underline">{subcategory.name}</h4>
+              <ul className=" ml-4">
+                {subcategory.products.map((product, prodIndex) => (
+                  <li key={prodIndex} className="text-gray-700">
+                    {product}
+                  </li>
+                ))}
+              </ul>
+            </div>
+          ))}
+          <button
+            className="fixed right-44 top-1/2 transform -translate-y-1/2 bg-white hover:bg-gray-200 shadow-md p-2 rounded-full"
+            onClick={scrollNext}
+          >
             <FaAngleRight />
           </button>
         </div>
       </div>
+      {/* )} */}
     </div>
-  )
+  );
 }
-
-export default Categories
