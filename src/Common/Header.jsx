@@ -38,7 +38,7 @@ function Header() {
   const totalItems = alphabets.length;
   const visibleAlphabets = alphabets.slice(currentIndex, currentIndex + itemsPerPage)
 
-const [isLoggedIn, setIsLoggedIn] = useState(true)
+const [isLoggedIn, setIsLoggedIn] = useState(false)
 const user = {}
 
   useEffect(() => {
