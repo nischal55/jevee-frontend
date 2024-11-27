@@ -9,15 +9,21 @@ import { Link } from 'react-router-dom';
 import { LiaPhoneVolumeSolid } from "react-icons/lia";
 import { HiOutlineInformationCircle } from "react-icons/hi2";
 import { MdOutlineNoteAlt } from "react-icons/md";
-import { GiNotebook } from "react-icons/gi";
+import { GiNotebook, GiReceiveMoney } from "react-icons/gi";
 import { PiWechatLogoLight, PiHandCoinsDuotone } from "react-icons/pi";
 import { SlLogin } from "react-icons/sl";
 import Categories from '../components/Categories';
-import { FaChevronLeft, FaAngleRight } from "react-icons/fa6";
+import { FaChevronLeft, FaAngleRight, FaPeopleRoof } from "react-icons/fa6";
 import LoginModal from '../components/LoginModal';
 import DropDownMenu from '../components/DropDownMenu';
 import SignUpModal from '../components/SignUpModal';
 import ForgetPasswordModal from '../components/ForgetPasswordModal';
+import { BsBagPlus } from "react-icons/bs";
+import { FiThumbsUp } from "react-icons/fi";
+import { RiMedicineBottleLine } from "react-icons/ri";
+import { GrAnnounce } from "react-icons/gr";
+import { TbVaccine } from "react-icons/tb";
+import { CiHeart, CiUser, CiLocationOn, CiUnlock } from "react-icons/ci";
 
 function Header() {
   const [dropMenu, setDropMenu] = useState(false)
@@ -31,6 +37,9 @@ function Header() {
   const itemsPerPage = 7;
   const totalItems = alphabets.length;
   const visibleAlphabets = alphabets.slice(currentIndex, currentIndex + itemsPerPage)
+
+const [isLoggedIn, setIsLoggedIn] = useState(true)
+const user = {}
 
   useEffect(() => {
     if (dropMenu || showLogin || showSignUp || forgetPassword) {
@@ -82,7 +91,7 @@ function Header() {
     <div className='mx-auto'>
       <div className={`max-w-full ${dropMenu || showLogin || showSignUp || forgetPassword === true ? "overflow-hidden" : ""} `} >
         {/* top-navbar */}
-        <div className='container h-[50px] md:h-[72px] grid grid-cols-5 md:grid-cols-4 lg:grid-cols-12 my-auto justify-between'>
+        <div className='container h-[50px] md:h-[72px] grid grid-cols-5 md:grid-cols-4 lg:grid-cols-12 justify-between'>
           <div className='relative flex my-auto col-span-2 gap-2 md:col-span-1 lg:col-span-2'>
             <div>
               <div onClick={() => { setDropMenu(true) }}>
@@ -156,10 +165,52 @@ function Header() {
               </Link>
             </li>
 
-            <li className='relative group cursor-pointer flex justify-between items-center gap-[1px]'><FaRegUser className='text-2xl md:text-3xl' />
-              <div className='hidden xl:flex flex-col'><p className='text-[12px]'>HelloUser</p>
+            <li className='relative group cursor-pointer flex justify-between items-center gap-[1px]'><FaRegUser className='md:text-2xl mt-2' />
+              <div className='hidden xl:flex flex-col'><p className='text-[12px]'>Hello {` `}
+              {
+                isLoggedIn ? user?.name : "user"
+              }   
+                </p>
                 <h2 className='flex items-center gap-2 text-sm font-semibold'>My Account </h2>
-                <ul className='absolute border-x border-b bg-[#F8F8F8] hidden group-hover:flex flex-col top-10 -right-20 z-30 pb-2 rounded-md'>
+
+             { isLoggedIn ?
+              <ul className='absolute border-x h-[100vh] border-b bg-[#F8F8F8] hidden group-hover:flex flex-col top-[39.4px] -right-20 z-30 pb-2 rounded-md overflow-y-auto scrollbar-thin'>
+                <li className='px-3 py-2 flex justify-center items-center border-b hover:bg-[#F4F5F7]'>
+                  <div className='flex items-center gap-4 bg-gradient-to-r from-[#51CDE7] via-[#7895FC] to-[#C167FC] px-3 py-2 text-white rounded-full w-[250px]'>
+                    <IoFlame className='text-xl' /> <h2>Jeevee Offers</h2>
+                  </div>
+                </li>
+                <li className='flex py-2 px-6 gap-4 items-center border-b hover:bg-[#F4F5F7]'><BsBagPlus className='text-xl' /><h2>Orders</h2></li>
+                <li className='flex py-2 px-6 gap-4 items-center border-b hover:bg-[#F4F5F7]'><FiThumbsUp className='text-xl' /><h2>Reviews</h2></li>
+                <li className='flex py-2 px-6 gap-4 items-center border-b hover:bg-[#F4F5F7]'><GiReceiveMoney className='text-xl' /><h2>Refer and Earn</h2></li>
+                <li className='flex py-2 px-6 gap-4 items-center border-b hover:bg-[#F4F5F7]'><RiMedicineBottleLine className='text-xl' /><h2>Prescriptions</h2></li>
+                <li className='flex py-2 px-6 gap-4 items-center border-b hover:bg-[#F4F5F7]'><GrAnnounce className='text-xl' /><h2>Campaign Booking</h2></li>
+                <li className='flex py-2 px-6 gap-4 items-center border-b hover:bg-[#F4F5F7]' to={"/feedback"}>
+                  <TbVaccine className='text-xl' />
+                <h2>Vaccination History</h2>
+                </li>
+                <li className='flex py-2 px-6 gap-4 items-center border-b hover:bg-[#F4F5F7]'><CiHeart className='text-xl' /><h2>Wishlist</h2></li>
+                <li className='flex py-2 px-6 gap-4 items-center border-b hover:bg-[#F4F5F7]'><CiUser className='text-xl' /><h2>Personal Information</h2></li>
+                <li className='flex py-2 px-6 gap-4 items-center border-b hover:bg-[#F4F5F7]'><FaPeopleRoof className='text-xl' /><h2>Family Members</h2></li>
+                <li className='flex py-2 px-6 gap-4 items-center border-b hover:bg-[#F4F5F7]'><CiLocationOn className='text-xl' /><h2>My Addresses</h2></li>
+                <li className='flex py-2 px-6 gap-4 items-center border-b hover:bg-[#F4F5F7]'><CiUnlock className='text-xl' /><h2>Change Password</h2></li>
+                <li className='flex py-2 px-6 gap-4 items-center border-b hover:bg-[#F4F5F7]'><LiaPhoneVolumeSolid className='text-xl' /><h2>Contact Us</h2></li>
+                  <li className='flex py-2 px-6 gap-4 items-center border-b hover:bg-[#F4F5F7]'><HiOutlineInformationCircle className='text-xl' /><h2>About Us</h2></li>
+                  <li className='flex py-2 px-6 gap-4 items-center border-b hover:bg-[#F4F5F7]'><MdOutlineNoteAlt className='text-xl' /><h2>Terms & Conditions</h2></li>
+                  <li className='flex py-2 px-6 gap-4 items-center border-b hover:bg-[#F4F5F7]'><GiNotebook className='text-xl' /><h2>Policies</h2></li>
+                  <li className=''>
+                  <Link className='flex py-2 px-6 gap-4 items-center border-b hover:bg-[#F4F5F7]' to={"/feedback"}>
+                    <PiWechatLogoLight className='text-xl' />
+                  <h2>Feedback</h2>
+                  </Link>
+                  </li>
+                    <Link to="/vendor-enrollment" className="flex py-2 px-6 gap-4 items-center border-b hover:bg-[#F4F5F7]">
+                    <PiHandCoinsDuotone className='text-xl' /><h2>Sell on Jeevee</h2>
+                    </Link>
+                <li className='flex py-2 px-6 gap-4 items-center text-[#F25CA8]' onClick={()=>setIsLoggedIn(false)}><SlLogin className='text-xl' /><h2>Logout</h2></li>
+              </ul>
+
+             :  <ul className='absolute border-x border-b bg-[#F8F8F8] hidden group-hover:flex flex-col top-[39.4px] -right-20 z-30 pb-2 rounded-md'>
                   <li className='px-3 py-2 flex justify-center items-center border-b hover:bg-[#F4F5F7]'>
                     <div className='flex items-center gap-4 bg-gradient-to-r from-[#51CDE7] via-[#7895FC] to-[#C167FC] px-3 py-2 text-white rounded-full w-[250px]'>
                       <IoFlame className='text-xl' /> <h2>Jeevee Offers</h2>
@@ -182,14 +233,25 @@ function Header() {
                     </Link>
                     </li>
                   <li className='flex py-2 px-6 gap-4 items-center' onClick={() => setShowLogin(true)}><SlLogin className='text-xl' /><h2>Login</h2></li>
-                </ul>
-
+                </ul> 
+         
+}
               </div>
               <IoIosArrowDown className='mt-2 md:mt-5' />
             </li>
-
-            <li className='cursor-pointer' onClick={() => setShowLogin(true)}><BsCart2 className='text-2xl' /></li>
-            <li className='cursor-pointer'><PiBellRingingLight className='text-2xl' onClick={() => setShowLogin(true)} /></li>
+            <li className='cursor-pointer'>
+            {
+  isLoggedIn ? <Link><BsCart2 className='text-2xl cursor-pointer' /></Link> : 
+ <BsCart2 onClick={() => setShowLogin(true)} className='text-2xl' />
+}
+            </li>
+           
+            <li className='cursor-pointer'>
+              {
+                isLoggedIn ?  <Link className="text-2xl">
+                <PiBellRingingLight />
+              </Link> : <PiBellRingingLight className='text-2xl' onClick={() => setShowLogin(true)} />
+              }</li>
             <li className='cursor-pointer flex items-center gap-2 relative' onClick={() => setShowflag(!showflag)}>
               <div className='h-[15px] w-[24px]'>
                 <img src="https://www.jeevee.com/_next/static/media/us_flag.937a74e4.png" alt="" className='w-full h-full' />
@@ -214,6 +276,7 @@ function Header() {
             </li>
           </ul>
         </div>
+<hr className='bg-slate-200 h-[1px]'/>
 
         <div className='container flex md:hidden gap-1 pt-1 pb-2 items-center'>
           <GoSearch className='text-blue-400 text-3xl ml-4' />
@@ -222,7 +285,7 @@ function Header() {
 
         {/* bottom navbar */}
 
-        {/* <Categories /> */}
+         <Categories /> 
 
         <hr />
       </div>
