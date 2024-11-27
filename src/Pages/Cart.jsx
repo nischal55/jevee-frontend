@@ -4,11 +4,37 @@ import { useSelector, useDispatch } from "react-redux";
 import { removeFromCart, updateCartQuantity } from "../Redux/Slice/cartSlice";
 
 const Cart = () => {
-  const cart = useSelector((state) => state.cart.cart || []); // Fallback to an empty array
+  // const cart = useSelector((state) => state.cart.cart || []); // Fallback to an empty array
+  let cart = [
+    {
+      id: 1,
+      name: "Product 1",
+      price: 1500,
+      discountPrice: 1200,
+      discountPercentage: 20,
+      quantity: 2,
+      image: "https://example.com/product1.webp",
+      color: "Red",
+      size: "M",
+      inclusiveTax: true,
+    },
+    {
+      id: 2,
+      name: "Product 2",
+      price: 2000,
+      discountPrice: 1800,
+      discountPercentage: 10,
+      quantity: 1,
+      image: "https://example.com/product2.webp",
+      color: "Blue",
+      size: "L",
+      inclusiveTax: false,
+    },
+  ];
   const dispatch = useDispatch();
   console.log(cart)
-  console.log(typeof(cart))
-console.log(Array.isArray(cart))
+  console.log(typeof (cart))
+  console.log(Array.isArray(cart))
   // Calculate total amount
   const calculateTotal = () =>
     Array.isArray(cart)
@@ -19,10 +45,10 @@ console.log(Array.isArray(cart))
   const calculateDiscount = () =>
     Array.isArray(cart)
       ? cart.reduce(
-          (discount, item) =>
-            discount + (item.price - item.discountPrice) * item.quantity,
-          0
-        )
+        (discount, item) =>
+          discount + (item.price - item.discountPrice) * item.quantity,
+        0
+      )
       : 0;
 
   // Handle quantity change
@@ -108,6 +134,16 @@ console.log(Array.isArray(cart))
               <span>Discount</span>
               <span>- NPR {calculateDiscount().toFixed(2)}</span>
             </div>
+            <div className="flex flex-col py-5">
+              <div className="flex justify-between p-5">
+                <i className="bi bi-exclamation-circle text-2xl mr-2"></i>
+                <p>
+                  Delivery charge may vary depending on the shipping address of
+                  your order.
+                </p>
+              </div>
+              <p className="self-end">&#91; inclusive of all tax &#93;</p>
+            </div>
           </div>
           <div className="text-lg font-bold flex justify-between mt-4">
             <span>Total</span>
@@ -116,11 +152,10 @@ console.log(Array.isArray(cart))
             </span>
           </div>
           <button
-            className={`w-full mt-6 py-2 rounded-md font-medium ${
-              cart.length === 0
+            className={`w-full mt-6 py-2 rounded-md font-medium ${cart.length === 0
                 ? "bg-gray-300 cursor-not-allowed"
                 : "bg-pink-600 text-white hover:bg-pink-700"
-            }`}
+              }`}
             disabled={cart.length === 0}
           >
             Checkout

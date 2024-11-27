@@ -41,6 +41,9 @@ import Cart from "./Pages/cart";
           },{
             path:"prescription",
             element:<Prescription />
+          },{
+            path:"cart",
+            element:<Cart/>
           }
         ],
 
@@ -71,10 +74,7 @@ import Cart from "./Pages/cart";
           path: "profile", 
           element: <Profile />, 
         },
-        {
-          path: "cart",
-          element: <Cart/>
-        },
+        
 
         ]
       },{
