@@ -11,6 +11,7 @@
   import Profile from "./Admin/pages/profile/profile";
   import ProductPageMain from "./components/ProductBox/ProductPageMain";
 import Prescription from "./Common/Prescription";
+import LoginTest from "./ApiTest/loginTest";
   export default function App() {
   const router = createBrowserRouter([
       {
@@ -76,6 +77,11 @@ import Prescription from "./Common/Prescription";
 
         path: "/login",
         element: <Login />
+      }
+      ,{
+
+        path: "/loginTest",
+        element: <LoginTest />
       }
     ]);
     return <>{<RouterProvider router={router} />}</>;
