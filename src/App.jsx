@@ -16,7 +16,21 @@ import CreateChildCategory from "./Admin/pages/categories/CreateChildCategory";
 import AllChildCategories from "./Admin/pages/categories/AllChildCategories";
 import CreateSubCategory from "./Admin/pages/categories/CreateSubCategory";
 import AllSubCategories from "./Admin/pages/categories/AllSubCategories";
+import Cart from "./Pages/cart/Cart";
+import About from "./components/AboutUs"
+import { Toaster } from "react-hot-toast";
+import { useDispatch, useSelector } from "react-redux";
+import { checkAuth } from "./Redux/Slice/authSlice";
+import { useEffect } from "react";
 export default function App() {
+  const { isAuthenticated, isLoading } = useSelector((state) => state.auth);
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(checkAuth());
+    
+  }, [dispatch]);
+
   const router = createBrowserRouter([
     {
       path: "/",
@@ -45,7 +59,15 @@ export default function App() {
         }, {
           path: "prescriptions",
           element: <Prescription />
-        }
+        },
+        {
+          path: "cart",
+          element: <Cart />
+        },
+        {
+          path: "about",
+          element: <About />
+        },
       ],
 
     },
@@ -104,19 +126,19 @@ export default function App() {
 
         },
         {
-          path:"product",
-          children:[{
-            path:"",
-            index:true,
-            element:<div>products</div>
+          path: "product",
+          children: [{
+            path: "",
+            index: true,
+            element: <div>products</div>
           },
-        {
-          path:"create",
-          element:<CreateProduct />
+          {
+            path: "create",
+            element: <CreateProduct />
+          }
+          ]
         }
-        ]
-        }
-        
+
 
       ]
     },
@@ -126,5 +148,8 @@ export default function App() {
       element: <Login />
     }
   ]);
-  return <>{<RouterProvider router={router} />}</>;
+  return <>
+    <Toaster position="top-right" />
+    {<RouterProvider router={router} />}</>;
 }
+
