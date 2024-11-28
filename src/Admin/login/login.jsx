@@ -2,19 +2,33 @@ import React, { useState } from "react";
 import "./login.css";
 import Logo from "../../assets/img/logo.webp";
 import { useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { login } from "../../Redux/Slice/authSlice";
+import { toast } from "react-toastify";
 
 const Login = () => {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+  const [email, setEmail] = useState("123456789"); 
+  const [password, setPassword] = useState("admin");
   const [rememberMe, setRememberMe] = useState(false);
 
   const navigate = useNavigate();
-
+const dispatch = useDispatch();
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log({ email, password, rememberMe });
-
-    navigate("/admin");
+  
+    const data = {identifier:email,password:password};
+    dispatch(login(data)).then((result) => {
+  
+        if(result.payload?.token){
+          
+            toast.success("Login successfully!")
+        navigate("/admin");
+      }else{
+        toast.error("Login failed!")
+        setEmail("");
+        setPassword("");  
+      }
+    })
   };
 
   return (
@@ -40,7 +54,7 @@ const Login = () => {
                 Email
               </label>
               <input
-                type="email"
+                type="text"
                 id="email"
                 className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
                 placeholder="Enter your email"
