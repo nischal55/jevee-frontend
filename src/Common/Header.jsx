@@ -24,8 +24,12 @@ import { RiMedicineBottleLine } from "react-icons/ri";
 import { GrAnnounce } from "react-icons/gr";
 import { TbVaccine } from "react-icons/tb";
 import { CiHeart, CiUser, CiLocationOn, CiUnlock } from "react-icons/ci";
+import { useDispatch, useSelector } from 'react-redux';
+import { logout } from '../Redux/Slice/authSlice';
 
 function Header() {
+  const {isAuthenticated,user} = useSelector(state=>state.auth)
+  const dispatch = useDispatch()
   const [dropMenu, setDropMenu] = useState(false)
   const [showLogin, setShowLogin] = useState(false)
   const [showSignUp, setShowSignUp] = useState(false)
@@ -38,8 +42,6 @@ function Header() {
   const totalItems = alphabets.length;
   const visibleAlphabets = alphabets.slice(currentIndex, currentIndex + itemsPerPage)
 
-const [isLoggedIn, setIsLoggedIn] = useState(true)
-const user = {}
 
   useEffect(() => {
     if (dropMenu || showLogin || showSignUp || forgetPassword) {
@@ -168,13 +170,13 @@ const user = {}
             <li className='relative group cursor-pointer flex justify-between items-center gap-[1px]'><FaRegUser className='md:text-2xl mt-2' />
               <div className='hidden xl:flex flex-col'><p className='text-[12px]'>Hello {` `}
               {
-                isLoggedIn ? user?.name : "user"
+                isAuthenticated ? user?.name : "user"
               }   
                 </p>
                 <h2 className='flex items-center gap-2 text-sm font-semibold'>My Account </h2>
 
-             { isLoggedIn ?
-              <ul className='absolute border-x h-[100vh] border-b bg-[#F8F8F8] hidden group-hover:flex flex-col top-[39.4px] -right-20 z-30 pb-2 rounded-md overflow-y-auto scrollbar-thin'>
+             { isAuthenticated ?
+              <ul className='absolute border-x h-[100vh] border-b bg-[#F8F8F8] hidden group-hover:flex flex-col z-50 top-[39.4px] -right-20 z-30 pb-2 rounded-md overflow-y-auto scrollbar-thin'>
                 <li className='px-3 py-2 flex justify-center items-center border-b hover:bg-[#F4F5F7]'>
                   <div className='flex items-center gap-4 bg-gradient-to-r from-[#51CDE7] via-[#7895FC] to-[#C167FC] px-3 py-2 text-white rounded-full w-[250px]'>
                     <IoFlame className='text-xl' /> <h2>Jeevee Offers</h2>
@@ -207,7 +209,7 @@ const user = {}
                     <Link to="/vendor-enrollment" className="flex py-2 px-6 gap-4 items-center border-b hover:bg-[#F4F5F7]">
                     <PiHandCoinsDuotone className='text-xl' /><h2>Sell on Jeevee</h2>
                     </Link>
-                <li className='flex py-2 px-6 gap-4 items-center text-[#F25CA8]' onClick={()=>setIsLoggedIn(false)}><SlLogin className='text-xl' /><h2>Logout</h2></li>
+                <li className='flex py-2 px-6 gap-4 items-center text-[#F25CA8]' onClick={()=> dispatch(logout())}><SlLogin className='text-xl' /><h2>Logout</h2></li>
               </ul>
 
              :  <ul className='absolute border-x border-b bg-[#F8F8F8] hidden group-hover:flex flex-col top-[39.4px] -right-20 z-30 pb-2 rounded-md'>
@@ -240,15 +242,15 @@ const user = {}
               <IoIosArrowDown className='mt-2 md:mt-5' />
             </li>
             <li className='cursor-pointer'>
-            {
-  isLoggedIn ? <Link to="/cart"><BsCart2 className='text-2xl cursor-pointer' /></Link> : 
+            
+            {isAuthenticated ? <Link to="/cart"><BsCart2 className='text-2xl cursor-pointer' /></Link> : 
  <BsCart2 onClick={() => setShowLogin(true)} className='text-2xl' />
 }
             </li>
            
             <li className='cursor-pointer'>
               {
-                isLoggedIn ?  <Link className="text-2xl">
+                isAuthenticated ?  <Link className="text-2xl">
                 <PiBellRingingLight />
               </Link> : <PiBellRingingLight className='text-2xl' onClick={() => setShowLogin(true)} />
               }</li>

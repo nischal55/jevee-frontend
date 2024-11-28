@@ -5,8 +5,11 @@ import axios from "axios";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { LuEye } from "react-icons/lu";
+import { useDispatch, useSelector } from "react-redux";
+import { login } from "../Redux/Slice/authSlice";
 
 function LoginModal({ closeLogin, setShowSignUp, setForgetPassword }) {
+  const {isLoading} = useSelector((state) => state.auth);
   const [focusState, setFocusState] = useState({
     phone: false,
     password: false,
@@ -17,6 +20,7 @@ function LoginModal({ closeLogin, setShowSignUp, setForgetPassword }) {
     phone: "",
     password: "",
   });
+  const dispatch = useDispatch();
 
   function handleChange(e) {
     const { name, value } = e.target;
@@ -25,21 +29,25 @@ function LoginModal({ closeLogin, setShowSignUp, setForgetPassword }) {
 
   function handleSubmit(e) {
     e.preventDefault();
+    const data = {identifier:userdata.phone,password:userdata.password};
     if (!userdata.phone || !userdata.password) {
       toast.error("Please fill in all fields.");
       return;
     }
-    setIsSubmitting(true);
-    axios
-      .post(`http://jeeve.vercel.app/login`, userdata)
-      .then((res) => {
-        toast("User logged in successfully");
-      })
-      .catch((err) => {
-        toast.error("Login failed. Please check your credentials.");
-        console.log("Error", err);
-        setIsSubmitting(false);
-      });
+    dispatch(login(data)).then((result) => {
+  
+      if(result.payload?.token){
+        
+          toast.success("Login successfully!")
+      closeLogin();
+    }else{
+      toast.error("Login failed!")
+      setEmail("");
+      setPassword("");  
+    }
+  })
+
+   
   }
 
   const handleFocus = (field) => {
@@ -114,10 +122,11 @@ function LoginModal({ closeLogin, setShowSignUp, setForgetPassword }) {
             </div>
             <button
               type="submit"
-              disabled={isSubmitting}
+              disabled={isLoading}
               className="bg-[#F2F2F2] px-5 py-2 items-center w-[40%] text-gray-400 mt-5 rounded-sm"
             >
-              Sign In
+              {isLoading?"Signing In":"Sign In"}
+              {/* Sign In */}
             </button>
           </form>
           <button
