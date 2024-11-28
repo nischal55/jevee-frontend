@@ -83,7 +83,7 @@ const showResult = categorys.slice(startIndex, startIndex + limit);
             <div className="cardHead -z-[0] flex flex-col md:flex-row justify-between gap-4">
                 <h2 className='text-3xl font-semibold text-[#34395E]'>Product Category </h2>
                 <div className='flex text-[12px] gap-2'>
-                  <Link className='text-blue-500'>Dashboard</Link>
+                  <a href='/admin/' className='text-blue-500 hover:underline decoration-blue-500'>Dashboard</a>
                   /
                   <h2 className='text-slate-500'>Product Category</h2>
                 </div>
