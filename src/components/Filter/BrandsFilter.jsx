@@ -3,14 +3,14 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSearch } from '@fortawesome/free-solid-svg-icons';
 
 const BrandsFilter = ({ brands = [], setFilteredBrands, selectedBrands = [] }) => {
-  const [searchQuery, setSearchQuery] = useState("");
+  const [searchQuery, setSearchQuery] = useState('');
 
   // Handle brand selection
   const handleBrandSelection = (brand) => {
     const updatedSelection = selectedBrands.includes(brand)
-      ? selectedBrands.filter((b) => b !== brand) // Remove the brand
-      : [...selectedBrands, brand]; // Add the brand
-    setFilteredBrands(updatedSelection); // Update selected brands
+      ? selectedBrands.filter((b) => b !== brand)
+      : [...selectedBrands, brand];
+    setFilteredBrands(updatedSelection);
   };
 
   // Filter the brands based on the search query

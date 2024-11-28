@@ -1,7 +1,10 @@
 import { Link } from "react-router-dom";
+import { addItemToCart } from "../Redux/Slice/cartSlice";
+import { useDispatch } from "react-redux";
 
 
 export default function ProductCard({ product = {} }) {
+  const dispatch = useDispatch()
   const {
     name,
     price,
@@ -14,10 +17,37 @@ export default function ProductCard({ product = {} }) {
     tag,
   } = product;
 
+  function handleAddToCart(event, product) {
+    event.stopPropagation(); // Prevent the click event from propagating to the parent elements
+    event.preventDefault(); // Prevent default behavior if the button is inside a form or link
+  
+    // Notify the user
+    alert("Product added to cart!");
+    
+    // Log the product details for debugging
+    
+    // Dispatch the action to add the product to the cart
+    dispatch(addItemToCart({
+      id: product.id || null, 
+      name: product.name,
+      price: product.price,
+      discountPrice: product.discountPrice,
+      discountPercentage: product.discountPercentage,
+      quantity: 1, // Default to 1 when adding to the cart
+      image: product.imageUrls[0],
+      color: product.color  ||null,
+      size: product.size ||null,
+      inclusiveTax: product.inclusiveTax ||null,
+    }));
+    console.log("Added to cart:", product);
+  }
+
+
+
   return (
     <Link
       to={href}
-      className="group transition-all duration-300 border-gray-100/30 flex min-w-[214px] flex-col self-center overflow-hidden rounded-lg border h-[385px] shadow-md bg-[#FFFFFF] text-black"
+      className="group transition-all duration-300 border-gray-100/30 flex min-w-[161px] lg:min-w-[214px] flex-col self-center overflow-hidden rounded-lg border h-[312px] lg:h-[385px] shadow-md bg-[#FFFFFF] text-black"
     >
       <div className="relative w-full h-[272px] px-2 mx-auto">
         {/* Conditionally Render Tag */}

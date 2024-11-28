@@ -19,3 +19,10 @@
   }
 }
 
+.slider .thumb{
+  width: 20px;
+  height: 20px;
+  background-color: #EC4899;
+  border-radius: 50%;
+  top: -9px;
+}
