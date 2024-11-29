@@ -13,8 +13,7 @@ const ProductPageMain = () => {
 
   
 
-  // Filter products based on selected category, subcategory, and filters
-  const filteredProducts = products.filter(product => {
+   const filteredProducts = products.filter(product => {
     const isCategoryMatch = product.category === category;
     const isSubCategoryMatch = subCategory ? product.subCategory === subCategory : true;
     const isChildCategoryMatch = childCategory ? product.childCategory === childCategory : true;
@@ -24,16 +23,13 @@ const ProductPageMain = () => {
   
     return isCategoryMatch && isChildCategoryMatch && isSubCategoryMatch && isBrandMatch && isSizeMatch && isPriceMatch;
   });
-  
-  // Filtered products based on the selected filters
-  
+    
   console.log(filteredProducts);
   
 
 
 
-  // Get unique brands and sizes from filtered products
-  const uniqueBrands = [...new Set(filteredProducts.map(product => product.brand))];
+   const uniqueBrands = [...new Set(filteredProducts.map(product => product.brand))];
   const uniqueSizes = [...new Set(filteredProducts.map(product => product.size))];
 
   return (
@@ -57,8 +53,7 @@ const ProductPageMain = () => {
       <div className="flex bg-white mx-1 lg:mx-16 lg:pr-9">
        
         <div className="hidden lg:block">
-          {/* Pass the filtered brands, sizes, and price setter to FilterComp */}
-          <FilterComp
+           <FilterComp
             availableBrands={uniqueBrands}
             availableSizes={uniqueSizes}
             setFilteredBrands={setFilteredBrands}

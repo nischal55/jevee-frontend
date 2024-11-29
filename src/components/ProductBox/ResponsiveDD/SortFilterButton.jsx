@@ -10,13 +10,12 @@ const SortFilterButton = ({ setFilteredBrands, setFilteredSizes, setFilteredPric
 
   const isAnyDivVisible = isDiv1Visible || isDiv2Visible;
 
-  // Function to close all divs
+  
   const closeDiv = () => {
     setIsDiv1Visible(false);
     setIsDiv2Visible(false);
   };
 
-  // Handle clicks outside the divs
   useEffect(() => {
     const handleClickOutside = (event) => {
       if (isDiv1Visible && div1Ref.current && !div1Ref.current.contains(event.target)) {
@@ -52,7 +51,7 @@ const SortFilterButton = ({ setFilteredBrands, setFilteredSizes, setFilteredPric
 
       {isAnyDivVisible && <div className="fixed inset-0 bg-gray-600 bg-opacity-50 transition-opacity duration-300 z-20" onClick={closeDiv} />}
 
-      {/* Sliding Div 1 */}
+      {/* Sort */}
       <div
         ref={div1Ref}
         className={`fixed bg-white bottom-0 left-1/2 transform -translate-x-1/2 w-full max-w-md bg-primary text-primary-foreground p-6 rounded-t-xl transition-transform duration-300 ease-in-out z-30 ${
@@ -71,7 +70,7 @@ const SortFilterButton = ({ setFilteredBrands, setFilteredSizes, setFilteredPric
         </div>
       </div>
 
-      {/* Sliding Div 2 */}
+      {/* Filter */}
       <div
         ref={div2Ref}
         className={`fixed bottom-0 left-1/2 transform -translate-x-1/2 w-full max-w-md bg-secondary text-secondary-foreground bg-white rounded-t-xl transition-transform duration-300 ease-in-out z-30 ${

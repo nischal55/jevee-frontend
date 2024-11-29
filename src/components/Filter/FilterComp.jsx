@@ -16,8 +16,7 @@ const FilterComp = ({ availableBrands, availableSizes, setFilteredBrands, setFil
   const [selectedBrands, setSelectedBrands] = useState([]);
   const [selectedSizes, setSelectedSizes] = useState([]);
 
-  // Fetch filtered products based on category, subcategory, and childCategory
-  useEffect(() => {
+   useEffect(() => {
     const filtered = products.filter(product => {
       if (childCategory) {
         return (
@@ -34,32 +33,26 @@ const FilterComp = ({ availableBrands, availableSizes, setFilteredBrands, setFil
 
     setFilteredProducts(filtered);
 
-    // Extract unique brands and sizes from the filtered products
-    const brands = [...new Set(filtered.map(product => product.brand))];
+     const brands = [...new Set(filtered.map(product => product.brand))];
     const sizes = [...new Set(filtered.map(product => product.size))];
 
     setFilteredBrandsLocal(brands);
     setFilteredSizesLocal(sizes);
   }, [category, subCategory, childCategory]);
 
-  // Update parent component filters when local filter states change
-  useEffect(() => {
+   useEffect(() => {
     setFilteredBrands(selectedBrands);
     setFilteredSizes(selectedSizes);
     setFilteredPrice(filteredPriceLocal);
   }, [selectedBrands, selectedSizes, filteredPriceLocal, setFilteredBrands, setFilteredSizes, setFilteredPrice]);
 
-  // Handle changes in brand filter
-  const handleBrandChange = (brands) => setSelectedBrands(brands);
+   const handleBrandChange = (brands) => setSelectedBrands(brands);
 
-  // Handle changes in size filter
-  const handleSizeChange = (sizes) => setSelectedSizes(sizes);
+   const handleSizeChange = (sizes) => setSelectedSizes(sizes);
 
-  // Handle changes in price filter
-  const handlePriceChange = (price) => setFilteredPriceLocal(price);
+   const handlePriceChange = (price) => setFilteredPriceLocal(price);
 
-  // Reset all filters
-  const handleResetFilters = () => {
+   const handleResetFilters = () => {
     setSelectedBrands([]);
     setSelectedSizes([]);
     setFilteredPriceLocal([0, 5000]);

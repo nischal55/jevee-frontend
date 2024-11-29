@@ -5,16 +5,14 @@ import { faSearch } from '@fortawesome/free-solid-svg-icons';
 const BrandsFilter = ({ brands = [], setFilteredBrands, selectedBrands = [] }) => {
   const [searchQuery, setSearchQuery] = useState('');
 
-  // Handle brand selection
-  const handleBrandSelection = (brand) => {
+   const handleBrandSelection = (brand) => {
     const updatedSelection = selectedBrands.includes(brand)
       ? selectedBrands.filter((b) => b !== brand)
       : [...selectedBrands, brand];
     setFilteredBrands(updatedSelection);
   };
 
-  // Filter the brands based on the search query
-  const filteredBrands = brands.filter(brand =>
+   const filteredBrands = brands.filter(brand =>
     brand.toLowerCase().includes(searchQuery.toLowerCase())
   );
 
@@ -39,10 +37,10 @@ const BrandsFilter = ({ brands = [], setFilteredBrands, selectedBrands = [] }) =
         {filteredBrands.length > 0 ? (
           filteredBrands.map((brand, index) => (
             <div key={index} className="flex px-1 items-center font-light justify-between py-2.5 pr-2 border-t-2 border-gray-300">
-              <label htmlFor={brand} className="text-sm">{brand}</label>
+              <label htmlFor={`brand-${brand}`} className="text-sm">{brand}</label>
               <input
                 type="checkbox"
-                id={brand}
+                id={`brand-${brand}`}
                 className="w-4 h-4"
                 checked={selectedBrands.includes(brand)}
                 onChange={() => handleBrandSelection(brand)}
