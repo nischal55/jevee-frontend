@@ -139,7 +139,7 @@ export default function AdminSidebar({ open, setOpen }) {
             name: "Manage Categories",
             sub: [
                 { name: "Categories", href: "/admin/product-category" },
-                { name: "Sub Category", href: "/admin/product-sub-category/create" },
+                { name: "Sub Category", href: "/admin/product-sub-category/" },
                 { name: "Child Category", href: "/admin/product-child-category/" },
                 // { name: "Mega Menu category", href: "/admin/" },
                 // { name: "Featured Category", href: "/admin/" },
