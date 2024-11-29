@@ -4,7 +4,7 @@ import authReducer from "./Slice/authSlice";
 import cartReducer from "./Slice/cartSlice"
 import { persistStore, persistReducer } from "redux-persist";
 import storage from "redux-persist/lib/storage";
-import { version } from "react";
+import bannerReducer from "./Slice/bannerSlice";
 const persistConfig = {
   key: "auth",
   storage, 
@@ -17,7 +17,8 @@ export const store = configureStore({
   reducer: {
     user: userReducer,
     auth:presistedAuthReducer,
-    cart: cartReducer
+    cart: cartReducer,
+    banner: bannerReducer
   },
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware({

@@ -13,7 +13,7 @@ import { Link } from "react-router-dom"
 export default function CategorySection() {
     return (
         <>
-            <Link>
+            <Link to={"/category/skincare/"}>
                 <div className=" grid grid-cols-4 lg:grid-cols-8 lg:gap-6 lg:my-[40px] my-2">
                     {categories.map((category,i) => {
                         return (

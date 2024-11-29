@@ -22,6 +22,10 @@ import { Toaster } from "react-hot-toast";
 import { useDispatch, useSelector } from "react-redux";
 import { checkAuth } from "./Redux/Slice/authSlice";
 import { useEffect } from "react";
+import CreateMainBanner from "./Admin/pages/banner/CreateMainBanner";
+import AllMainBanner from "./Admin/pages/banner/AllMainBanner";
+// import InsideProductPage from "./components/ProductBox/InsideProductPage";
+import Product from "./Pages/product/Product";
 export default function App() {
   const { isAuthenticated, isLoading } = useSelector((state) => state.auth);
   const dispatch = useDispatch();
@@ -52,6 +56,10 @@ export default function App() {
         {
           path: "/category/:category",
           element: <ProductPageMain />
+        },
+        {
+          path:"product-description/",
+          element:<Product />
         },
         {
           path: "/category/:category/:subCategory",
@@ -136,6 +144,26 @@ export default function App() {
             path: "create",
             element: <CreateProduct />
           }
+          ]
+        },
+        {
+          path:"banner",
+          children:[
+            {
+              path: "main-banner",
+              children:[{
+                path:"",
+                index:true,
+                element:<AllMainBanner/>
+              },
+                {
+                  path: "create",
+                  index: true,
+                  element: <CreateMainBanner />
+                }
+              ]
+            }
+              
           ]
         }
 
