@@ -3,7 +3,7 @@ import ProductCard from '../ProductCard';
 import { useParams } from 'react-router-dom';
 
 const ProductPage = ({ filteredBrands, filteredSizes, filteredPrice, filteredProducts }) => {
-  const { category, subCategory } = useParams();
+  const { category, subCategory , childCategory } = useParams();
 
   const productsToFilter = Array.isArray(filteredProducts) ? filteredProducts : [];
 
@@ -19,10 +19,14 @@ const ProductPage = ({ filteredBrands, filteredSizes, filteredPrice, filteredPro
     <div className="px-3 flex flex-col">
       <div className="py-3">
         <h1 className="text-sm font-light">Categories</h1>
+       
         <p className="text-2xl font-light">
-           {subCategory ? 
-            ` ${subCategory.charAt(0).toUpperCase() + subCategory.slice(1)}` : 
-            category.charAt(0).toUpperCase() + category.slice(1)
+           {childCategory 
+  ? childCategory.charAt(0).toUpperCase() + childCategory.slice(1) 
+  : (subCategory 
+      ? subCategory.charAt(0).toUpperCase() + subCategory.slice(1) 
+      : category.charAt(0).toUpperCase() + category.slice(1))
+
           }
         </p>
       </div>

@@ -56,7 +56,12 @@ export default function App() {
         {
           path: "/category/:category/:subCategory",
           element: <ProductPageMain />
-        }, {
+        },
+        {
+          path: "/category/:category/:subCategory/:childCategory",
+          element: <ProductPageMain />
+        },
+        {
           path: "prescriptions",
           element: <Prescription />
         },
@@ -68,6 +73,7 @@ export default function App() {
           path: "about",
           element: <About />
         },
+       
       ],
 
     },

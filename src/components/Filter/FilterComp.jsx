@@ -4,36 +4,43 @@ import BrandsFilter from './BrandsFilter';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faRotate } from '@fortawesome/free-solid-svg-icons';
 import SizeFilter from './SizeFilter';
-import Slider from './SliderComp';  
-import products from '../../data/product';  
+import Slider from './SliderComp';
+import products from '../../data/product';
 
-const FilterComp = ({ setFilteredBrands, setFilteredSizes, setFilteredPrice }) => {
-  const { category, subCategory } = useParams();
+const FilterComp = ({ availableBrands, availableSizes, setFilteredBrands, setFilteredSizes, setFilteredPrice }) => {
+  const { category, subCategory, childCategory } = useParams();
   const [filteredProducts, setFilteredProducts] = useState([]);
   const [filteredBrandsLocal, setFilteredBrandsLocal] = useState([]);
   const [filteredSizesLocal, setFilteredSizesLocal] = useState([]);
-  const [filteredPriceLocal, setFilteredPriceLocal] = useState([0, 5000]);  
-  const [selectedBrands, setSelectedBrands] = useState([]);  
-  const [selectedSizes, setSelectedSizes] = useState([]); 
+  const [filteredPriceLocal, setFilteredPriceLocal] = useState([0, 5000]);
+  const [selectedBrands, setSelectedBrands] = useState([]);
+  const [selectedSizes, setSelectedSizes] = useState([]);
 
-  // Fetch filtered products based on category and subcategory
+  // Fetch filtered products based on category, subcategory, and childCategory
   useEffect(() => {
     const filtered = products.filter(product => {
+      if (childCategory) {
+        return (
+          product.category === category &&
+          product.subCategory === subCategory &&
+          product.childCategory === childCategory
+        );
+      }
       if (subCategory) {
         return product.category === category && product.subCategory === subCategory;
       }
-      return product.category === category;  
+      return product.category === category;
     });
 
     setFilteredProducts(filtered);
-    
+
     // Extract unique brands and sizes from the filtered products
     const brands = [...new Set(filtered.map(product => product.brand))];
     const sizes = [...new Set(filtered.map(product => product.size))];
-    
-    setFilteredBrandsLocal(brands);  
-    setFilteredSizesLocal(sizes);  
-  }, [category, subCategory]);
+
+    setFilteredBrandsLocal(brands);
+    setFilteredSizesLocal(sizes);
+  }, [category, subCategory, childCategory]);
 
   // Update parent component filters when local filter states change
   useEffect(() => {
@@ -43,13 +50,13 @@ const FilterComp = ({ setFilteredBrands, setFilteredSizes, setFilteredPrice }) =
   }, [selectedBrands, selectedSizes, filteredPriceLocal, setFilteredBrands, setFilteredSizes, setFilteredPrice]);
 
   // Handle changes in brand filter
-  const handleBrandChange = (brands) => setSelectedBrands(brands); 
+  const handleBrandChange = (brands) => setSelectedBrands(brands);
 
   // Handle changes in size filter
-  const handleSizeChange = (sizes) => setSelectedSizes(sizes);  
+  const handleSizeChange = (sizes) => setSelectedSizes(sizes);
 
   // Handle changes in price filter
-  const handlePriceChange = (price) => setFilteredPriceLocal(price); 
+  const handlePriceChange = (price) => setFilteredPriceLocal(price);
 
   // Reset all filters
   const handleResetFilters = () => {
@@ -64,24 +71,22 @@ const FilterComp = ({ setFilteredBrands, setFilteredSizes, setFilteredPrice }) =
   return (
     <div className="">
       <div className="flex justify-between px-5 pt-3 items-center">
-        <h1 className='text-xl font-bold'>Filter</h1>
+        <h1 className="text-xl font-bold">Filter</h1>
         <button
           className="text-pink-500 flex justify-center px-3 items-center gap-1 font-thin text-sm"
           onClick={handleResetFilters}
         >
           Reset
-          <FontAwesomeIcon icon={faRotate} className='font-thin' />
+          <FontAwesomeIcon icon={faRotate} className="font-thin" />
         </button>
       </div>
       <div className="min-w-72">
-        {/* BrandsFilter should be getting the correct 'brands' prop now */}
-        
-
+        {/* BrandsFilter */}
         {filteredBrandsLocal.length > 0 ? (
-          <BrandsFilter 
-            setFilteredBrands={handleBrandChange} 
-            brands={filteredBrandsLocal} 
-            selectedBrands={selectedBrands} 
+          <BrandsFilter
+            setFilteredBrands={handleBrandChange}
+            brands={filteredBrandsLocal}
+            selectedBrands={selectedBrands}
           />
         ) : (
           <p>No brands available for this category.</p>
@@ -89,10 +94,10 @@ const FilterComp = ({ setFilteredBrands, setFilteredSizes, setFilteredPrice }) =
 
         {/* SizeFilter */}
         {filteredSizesLocal.length > 0 ? (
-          <SizeFilter 
-            setFilteredSizes={handleSizeChange} 
-            sizes={filteredSizesLocal} 
-            selectedSizes={selectedSizes} 
+          <SizeFilter
+            setFilteredSizes={handleSizeChange}
+            sizes={filteredSizesLocal}
+            selectedSizes={selectedSizes}
           />
         ) : (
           <p>No sizes available for this category.</p>

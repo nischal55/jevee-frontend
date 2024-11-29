@@ -6,7 +6,7 @@ import products from '../../data/product';
 import SortFilterButton from './ResponsiveDD/SortFilterButton';
 
 const ProductPageMain = () => {
-  const { category, subCategory } = useParams();  
+  const { category, subCategory , childCategory } = useParams();  
   const [filteredBrands, setFilteredBrands] = useState([]);
   const [filteredSizes, setFilteredSizes] = useState([]);
   const [filteredPrice, setFilteredPrice] = useState([0, 5000]);
@@ -17,14 +17,17 @@ const ProductPageMain = () => {
   const filteredProducts = products.filter(product => {
     const isCategoryMatch = product.category === category;
     const isSubCategoryMatch = subCategory ? product.subCategory === subCategory : true;
+    const isChildCategoryMatch = childCategory ? product.childCategory === childCategory : true;
     const isBrandMatch = filteredBrands.length === 0 || filteredBrands.includes(product.brand);
     const isSizeMatch = filteredSizes.length === 0 || filteredSizes.includes(product.size);
     const isPriceMatch = product.price >= filteredPrice[0] && product.price <= filteredPrice[1];
   
-    return isCategoryMatch && isSubCategoryMatch && isBrandMatch && isSizeMatch && isPriceMatch;
+    return isCategoryMatch && isChildCategoryMatch && isSubCategoryMatch && isBrandMatch && isSizeMatch && isPriceMatch;
   });
   
   // Filtered products based on the selected filters
+  
+  console.log(filteredProducts);
   
 
 
@@ -80,4 +83,3 @@ const ProductPageMain = () => {
 };
 
 export default ProductPageMain;
-
