@@ -18,8 +18,8 @@ export default function ProductCard({ product = {} }) {
   } = product;
 
   function handleAddToCart(event, product) {
-    event.stopPropagation(); // Prevent the click event from propagating to the parent elements
-    event.preventDefault(); // Prevent default behavior if the button is inside a form or link
+    event.stopPropagation();
+    event.preventDefault(); 
   
     // Notify the user
     alert("Product added to cart!");
@@ -46,10 +46,10 @@ export default function ProductCard({ product = {} }) {
 
   return (
     <Link
-      to={href}
+      to={"/product-description"}
       className="group transition-all duration-300 border-gray-100/30 flex min-w-[161px] lg:min-w-[214px] flex-col self-center overflow-hidden rounded-lg border h-[312px] lg:h-[385px] shadow-md bg-[#FFFFFF] text-black"
     >
-      <div className="relative w-full h-[272px] px-2 mx-auto">
+      <div className="relative w-full h-[240px] lg:h-[272px] px-2 mx-auto">
         {/* Conditionally Render Tag */}
         {tag && (
           <div className="absolute z-10 top-2 left-2 bg-white text-blue-500 text-sm px-1 py-1 rounded-md shadow-sm">
@@ -123,7 +123,7 @@ export default function ProductCard({ product = {} }) {
             {/* Add to Cart */}
             <button
               onClick={(e) => handleAddToCart(e, product)}
-              className="flex-1 bg-[#F25CA8] text-white py-2 rounded-sm hover:shadow-md hover:bg-[#F25CA8]"
+              className="flex-1 bg-[#F25CA8] text-white py-1 lg:py-2 rounded-sm hover:shadow-md hover:bg-[#F25CA8]"
             >
               Add to Cart
             </button>

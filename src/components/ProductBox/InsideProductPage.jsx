@@ -6,7 +6,7 @@ import { FaPlusCircle } from "react-icons/fa";
 import { FaMinusCircle } from "react-icons/fa";
 
 
-export default function ProductPage() {
+export default function InsideProductPage() {
   const [quantity, setQuantity] = useState(1);
 
   const thumbnails = [
@@ -20,7 +20,7 @@ export default function ProductPage() {
   const decrement = () => setQuantity(Math.max(1, quantity - 1));
 
   return (
-    <div className="container mx-auto px-4 py-6 bg-white mt-[100px] mb-10">
+    <div className="container mx-auto px-4 py-6 bg-white my-4 mb-10">
       <div className="grid gap-8 md:grid-cols-2">
         {/* Product Images */}
         <div className="flex gap-4">
@@ -29,9 +29,8 @@ export default function ProductPage() {
             {thumbnails.map((thumbnail, index) => (
               <div
                 key={index}
-                className={`border rounded-lg p-2 w-20 h-20 cursor-pointer ${
-                  mainImage === thumbnail ? "border-[#f692c4]" : ""
-                }`}
+                className={`border rounded-lg p-2 w-20 h-20 cursor-pointer ${mainImage === thumbnail ? "border-[#f692c4]" : ""
+                  }`}
                 onClick={() => setMainImage(thumbnail)} // Update main image on click
               >
                 <img src={thumbnail} alt={`Thumbnail ${index + 1}`} width={80} height={80} />
@@ -43,7 +42,7 @@ export default function ProductPage() {
             <span className="absolute top-4 left-4 text-[#7e70e8] px-3 py-1 text-sm font-medium rounded shadow-lg">
               BESTSELLER
             </span>
-            <img className="h-[500px] w-[500px] mt-5" src={mainImage} alt="Main Product" width={400} height={400}/>
+            <img className="h-[500px] w-[500px] mt-5" src={mainImage} alt="Main Product" width={400} height={400} />
           </div>
         </div>
 
