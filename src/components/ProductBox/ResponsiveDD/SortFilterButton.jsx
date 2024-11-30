@@ -3,10 +3,15 @@ import FilterpageMview from "./FilterpageMview";
 import { X } from "lucide-react";
 
 const SortFilterButton = ({
+  handleReset,
   setSortOrder,
   setSortState,
   setFilteredBrands,
+  brands,
+  selectedBrands,
   setFilteredSizes,
+  sizes,
+  selectedSizes,
   setFilteredPrice,
   showCase,
 }) => {
@@ -218,9 +223,14 @@ const SortFilterButton = ({
         </div>
         <div>
           <FilterpageMview
+            handleReset={handleReset}
             closeDiv={closeDiv}
             setFilteredBrands={setFilteredBrands}
+            brands={brands}
+            selectedBrands={selectedBrands}
             setFilteredSizes={setFilteredSizes}
+            sizes={sizes}
+            selectedSizes={selectedSizes}
             setFilteredPrice={setFilteredPrice}
           />
         </div>
