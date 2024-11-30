@@ -61,7 +61,7 @@ const handlePriceChange = (price) => setFilteredPriceLocal(price);
 
 
   return (
-    <div className="flex max-h-[60vh] flex-col h-screen">
+    <div className="flex max-h-[70vh] flex-col h-screen">
        <div className="flex flex-grow pl-3">
          <div className="flex flex-col bg-gray-200 text-start">
           <button
@@ -113,15 +113,15 @@ const handlePriceChange = (price) => setFilteredPriceLocal(price);
         </div>
       </div>
 
-       <div className="flex justify-end bg-gray-100">
+       <div className="flex justify-end px-2.5 pb-1 bg-gray-100">
         <button
-          className="py-2 px-4 w-full bg-gray-300 rounded hover:bg-gray-400"
+          className="py-2 px-4 w-full bg-[#6D5EDF] text-white "
           onClick={handleReset}
         >
           Reset
         </button>
         <button
-          className="py-2 px-4 w-full bg-green-500 text-white rounded hover:bg-green-600"
+          className="py-2 px-4 w-full bg-pink-500 text-white  "
           onClick={closeDiv}  
         >
           Done

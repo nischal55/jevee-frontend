@@ -74,6 +74,7 @@ const FilterComp = ({ availableBrands, availableSizes, setFilteredBrands, setFil
         </button>
       </div>
       <div className="min-w-72">
+        
         {/* BrandsFilter */}
         {filteredBrandsLocal.length > 0 ? (
           <BrandsFilter
