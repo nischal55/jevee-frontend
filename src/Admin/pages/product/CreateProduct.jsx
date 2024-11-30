@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { PiListBulletsBold } from "react-icons/pi";
+import RichTextEditor from "../../../components/RichTextEditor";
 
 const CreateProduct = () => {
   // Dummy categories, subcategories, and child categories
@@ -36,10 +37,9 @@ const CreateProduct = () => {
     categoryId: "",
     subcategoryId: "",
     childCategoryId: "",
+    description:"",
     status: "active",
   });
-
-  // Filter subcategories and child categories based on selected category and subcategory
   const filteredSubcategories = subcategories.filter(
     (subcategory) => subcategory.categoryId === Number(formData.categoryId)
   );
@@ -54,8 +54,8 @@ const CreateProduct = () => {
     setFormData({
       ...formData,
       [name]: value,
-      ...(name === "categoryId" && { subcategoryId: "", childCategoryId: "" }), // Reset subcategories and child categories
-      ...(name === "subcategoryId" && { childCategoryId: "" }), // Reset child categories
+      ...(name === "categoryId" && { subcategoryId: "", childCategoryId: "" }), 
+      ...(name === "subcategoryId" && { childCategoryId: "" }), 
     });
   };
 
@@ -240,6 +240,24 @@ const CreateProduct = () => {
               multiple
               className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
             />
+          </div>
+          <div className="flex flex-col">
+            <label htmlFor="description" className="text-sm font-semibold my-1">
+              Description
+            </label>
+            <RichTextEditor
+              value={formData.description}
+              onChange={(value) => setFormData({ ...formData, description: value })}
+            />
+            {/* <input
+              type="file"
+              id="images"
+              name="images"
+              onChange={handleFileChange}
+              accept="image/*"
+              multiple
+              className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+            /> */}
           </div>
 
           {/* Status */}

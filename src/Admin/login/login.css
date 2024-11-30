@@ -12,7 +12,7 @@ input:focus {
   border-color: #6777ef;
 }
 
-button:hover {
+.btn:hover {
   background-color: #6777ef; 
 }
 .formWrap {
