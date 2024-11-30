@@ -14,7 +14,8 @@ const products = [
         tag: "Best Seller",
         size: "30ml",
         category: "skincare",
-        subCategory: "face-serum",
+        subCategory: "abc",
+        childCategory: "face-serum",
         brand: "The Derma Co",
     },
     {
@@ -31,7 +32,8 @@ const products = [
         size: "50g",
         tag: "New Arrival",
         category: "skincare",
-        subCategory: "moisturizer",
+        subCategory: "abc",
+        childCategory: "moisturizer",
         brand: "Olay",
     },
     {
@@ -48,7 +50,8 @@ const products = [
         tag: "Top Rated",
         size: "30 Quantities",
         category: "skincare",
-        subCategory: "exfoliator",
+        subCategory: "pqr",
+        childCategory: "exfoliator",
         brand: "L'Oréal Paris",
     },
     {
@@ -65,7 +68,8 @@ const products = [
         tag: "Best Seller",
         size: "50g",
         category: "skincare",
-        subCategory: "moisturizer",
+        subCategory: "abc",
+        childCategory: "moisturizer",
         brand: "Neutrogena",
     },
     {
@@ -82,7 +86,8 @@ const products = [
         tag: "Popular",
         size: "200ml",
         category: "skincare",
-        subCategory: "moisturizer",
+        subCategory: "abc",
+        childCategory: "moisturizer",
         brand: "Nivea",
     },
     {
@@ -100,6 +105,7 @@ const products = [
         category: "skincare",
         size: "400ml",
         subCategory: "cleansers",
+        childCategory: "cleanser",
         brand: "Garnier",
     },
     {

@@ -64,18 +64,24 @@ export default function App() {
         {
           path: "/category/:category/:subCategory",
           element: <ProductPageMain />
-        }, {
+        },
+        {
+          path: "/category/:category/:subCategory/:childCategory",
+          element: <ProductPageMain />
+        },
+        {
           path: "prescriptions",
           element: <Prescription />
         },
         {
-          path: "cart",
+          path: "/cart",
           element: <Cart />
         },
         {
           path: "about",
           element: <About />
         },
+       
       ],
 
     },
