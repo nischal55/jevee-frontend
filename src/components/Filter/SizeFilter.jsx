@@ -45,7 +45,7 @@ const SizeFilter = ({ setFilteredSizes, sizes, selectedSizes = [] }) => {
         />
       </div>
 
-      <div className="overflow-auto scrollbar-thin scrollbar-thumb-gray-300 scrollbar-track-transparent max-h-80">
+      <div className="overflow-auto scrollbar-thin scrollbar-thumb-gray-300 scrollbar-track-transparent max-h-full">
         {filteredSizes && filteredSizes.length > 0 ? (
           filteredSizes.map((size, index) => (
            <div key={index} className="flex px-1 items-center font-light justify-between py-2.5 pr-2 border-t-2 border-gray-300">

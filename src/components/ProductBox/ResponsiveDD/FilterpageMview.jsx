@@ -115,13 +115,13 @@ const handlePriceChange = (price) => setFilteredPriceLocal(price);
 
        <div className="flex justify-end bg-gray-100">
         <button
-          className="py-2 px-4 w-full bg-gray-300 rounded hover:bg-gray-400"
+          className="py-2 px-4 w-full bg-[#6D5EDF] text-white "
           onClick={handleReset}
         >
           Reset
         </button>
         <button
-          className="py-2 px-4 w-full bg-green-500 text-white rounded hover:bg-green-600"
+          className="py-2 px-4 w-full bg-pink-500 text-white  "
           onClick={closeDiv}  
         >
           Done

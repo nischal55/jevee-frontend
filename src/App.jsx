@@ -74,7 +74,7 @@ export default function App() {
           element: <Prescription />
         },
         {
-          path: "cart",
+          path: "/cart",
           element: <Cart />
         },
         {
