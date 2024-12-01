@@ -33,7 +33,7 @@ const BrandsFilter = ({ brands = [], setFilteredBrands, selectedBrands = [] }) =
       </div>
 
       {/* Brand list */}
-      <div className="overflow-auto scrollbar-thin scrollbar-thumb-gray-300 pr-2 scrollbar-track-transparent max-h-80">
+      <div className="overflow-auto scrollbar-thin scrollbar-thumb-gray-300 pr-2 scrollbar-track-transparent max-h-[350px] lg:max-h-80">
         {filteredBrands.length > 0 ? (
           filteredBrands.map((brand, index) => (
             <div key={index} className="flex px-1 items-center font-light justify-between py-2.5 pr-2 border-t-2 border-gray-300">
